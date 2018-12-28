@@ -1,0 +1,29 @@
+<body ng-controller="admController">
+    <div class="col-md-12" id="admin">
+        <h3>Jogadores</h3>
+        <table class="table table-striped">
+            <tr>
+                <td>Nome</td>
+                <td>endereço</td>
+                <td>Nível Jogador</td>
+                <td>telefone</td>
+                <td>Ação</td>
+            </tr>
+            <tr ng-repeat="usuario in usuarios">
+                <td>{{usuario.nomeUser}}</td>
+                <td>{{usuario.enderecoUser}}</td>
+                <td><input type="number" class="form-control" ng-value={{usuario.nivelUser}} min="0" max="5"></td>
+                <td>{{usuario.telefoneUser}}</td>
+            <td>
+                <!-- <button type="button" class="btn btn-danger btn-xs" ng-click="excluir($index)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button> -->
+                <button type="button" class="btn btn-default " ng-click="editar(usuario)" >
+                    <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Salvar
+                </button>
+            </td>
+            </tr>
+        </table>
+    </div>
+
+</body>

@@ -1,0 +1,22 @@
+.navbar-default{
+    height: 56px;
+}
+#logo{
+    margin-top: 3px;
+}
+
+.navbar-brand img{
+    margin-top: -11px;
+}
+
+#logo{
+    margin-top: -11px;
+}
+
+.navbar-collapse{
+    background-color:  #f8f8f8;
+}
+
+.col-md-12 { padding-top: 70px !important; }
+
+#admin { padding-top: 45px !important;}

@@ -1,0 +1,119 @@
+<body ng-controller="dadosController">
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <form class="form-horizontal">
+                            <fieldset>
+                            
+                                <!-- Form Name -->
+                                <legend id="legenda">DADOS CADASTRAIS</legend>
+                                
+                                <!-- Text input-->
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="Nome">Nome</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                            <i class="fa fa-user"></i>
+                                            </div>
+                                            <input type="text" placeholder="Nome completo" ng-model="nome" class="form-control input-md">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- File Button   image/png -->
+                                <!-- <div class="form-group">
+                                    <label class="col-md-4 control-label" for="Upload photo">Carregar foto de Perfil</label>
+                                    <div class="btn-group">
+                                        <div flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)">
+                                            <button flow-btn type="file" class="btn btn-primary"><span class="glyphicon glyphicon-folder-open" accept="image/jpeg"></span>  Carregar Foto</button>
+                                            <button type="submit" class="btn btn-success" ng-click="alterar_foto()"><span class="glyphicon glyphicon-floppy-save"></span> Salvar Foto</button>
+                                        </div>
+                                    </div>
+                                
+                                </div>  -->
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="email">Endereço</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-map-marker"></i>
+                                            </div>
+                                            <input type="text" placeholder="Endereço" ng-model="endereco" class="form-control input-md">                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="email">Telefone</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-earphone"></i>
+                                            </div>
+                                            <input type="text" placeholder="telefone" class="form-control input-md" ng-value="telefone">                    
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="email">Nível</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-star"></i>
+                                            </div>
+                                            <input type="number" ng-value="nivel" class="form-control input-md" title="Nível do Jogador 0 a 5" disabled>                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="email">Email</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-envelope"></i>
+                                            </div>
+                                            <input type="email" placeholder="Endereço de E-mail" ng-model="email" class="form-control input-md" disabled>                    
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="senha">Senha</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fas fa-key"></i>
+                                            </div>
+                                            <input type="password" placeholder="Senha" ng-model="senha" class="form-control input-md">                    
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" ></label>  
+                                    <div class="col-md-4">
+                                        <input type="submit" class="btn btn-success" ng-click="alterar()" value="Alterar">  
+                                    </div>
+                                </div>
+                            
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="col-md-2 hidden-xs">
+                    <!-- <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail" ng-hide="!fotoPerfil">  -->
+                    <!-- <img ng-src="{{fotoPerfil}}" class="img-responsive img-thumbnail"> -->
+                    </div>
+                
+                
+                </div>
+            </div>
+</body>

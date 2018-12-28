@@ -1,0 +1,16 @@
+body { 
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: auto;
+    position: static;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: 5px;
+  }
+
+  img{
+    width: 250px;
+    height: 55px;
+  }
