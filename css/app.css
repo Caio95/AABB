@@ -17,6 +17,10 @@
     background-color:  #f8f8f8;
 }
 
-.col-md-12 { padding-top: 70px !important; }
+#input_nivel{
+    width: 100px !important;
+}
 
-#admin { padding-top: 45px !important;}
+#pesquisa_jogador{
+    padding-top: 70px !important;
+}

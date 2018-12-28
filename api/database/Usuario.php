@@ -42,6 +42,15 @@ Class Usuario {
         return $user;
     }
 
+    public static function find_name($nome) {
+        $pdo = Database::connection();
+        $sql = 'SELECT * FROM usuario WHERE nomeUser LIKE %?%';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($nome));
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        return $user;
+    }
+
     public static function validate($email, $senha){
         $pdo = Database::connection();
         $sql = 'SELECT * FROM usuario WHERE emailUser = ? AND senhaUser = ?';
