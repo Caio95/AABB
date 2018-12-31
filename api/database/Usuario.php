@@ -62,7 +62,7 @@ Class Usuario {
     
     public static function update($nome, $endereco, $senha, $telefone, $idUser){
         $pdo = Database::connection();
-        $sql = 'UPDATE usuario SET nomeUser=?, enderecoUser=?, senhaUser=?, telefoneUser=?, WHERE idUser=?';
+        $sql = 'UPDATE usuario SET nomeUser=?, enderecoUser=?, senhaUser=?, telefoneUser=? WHERE idUser=?';
         $query = $pdo->prepare($sql);
         $query->execute(array($nome, $endereco, $senha, $telefone, $idUser));
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
@@ -78,9 +78,7 @@ Class Usuario {
             $usuario = $query->fetch(PDO::FETCH_ASSOC);
             return $usuario;
        
-        // catch (Exception $ex){
-        //     throw new Exception("Erro ao alterar usuario", 1);
-        // }
+
 
     }
 }

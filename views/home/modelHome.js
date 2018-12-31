@@ -15,5 +15,7 @@ angular.module('moduloHome',[])
                 $location.path('/');
                 delete $localStorage.usuario;
             }
+        } else{
+            $location.path('/');
         }
     })

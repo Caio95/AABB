@@ -21,6 +21,22 @@
     width: 100px !important;
 }
 
+#dados_user {
+    padding-top: 70px !important;
+}
+
+#opcoes_adm {
+    padding-top: 70px !important;
+}
+
 #pesquisa_jogador{
     padding-top: 70px !important;
+}
+
+#tabela_partidas{
+    padding-top: 70px !important;
+}
+
+#dataPartida{
+    font-size: 7px !important;
 }

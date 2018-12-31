@@ -5,6 +5,7 @@ angular.module('moduloAdm',[])
     .controller('admController', function($rootScope, $scope, $http, $location, $localStorage){
         $rootScope.pageTitle = 'AABB Esportivo | Administrativo';
         var nivel =0;
+        $rootScope.adm = true;
         if($localStorage.usuario){
             $rootScope.usuario = $localStorage.usuario;
             $rootScope.name = $localStorage.name;
@@ -20,7 +21,6 @@ angular.module('moduloAdm',[])
             }
 
             $scope.editar = function(usuario){    
-                console.log($scope.nivel);
                 $http.post('http://localhost/aabb/api/usuario/update_nivel.php',{
                     'nivel': nivel,
                     'idUser': usuario.idUser
@@ -28,8 +28,26 @@ angular.module('moduloAdm',[])
                     alert('Nível alterado com sucesso!');
                     nivel =0;    
                 })
-                   
+                
+            }
 
+            $scope.cadastrar_partida = function(){
+                $http.post('http://localhost/aabb/api/partida/save.php',{
+                     'descricao' : $scope.descricao_partida,
+                     'data': $scope.data_partida,
+                     'hora': $scope.hora_partida
+                }).then(function(result){
+                    alert('Partida Cadastrada!');
+                    $scope.descricao_partida = null,
+                    $scope.data_partida = null,
+                    $scope.hora_partida = null
+                })
+            }
+            
+            $scope.sair = function(){
+                $rootScope.usuario =false;
+                $location.path('/');
+                delete $localStorage.usuario;
             }
 
             $scope.pesquisar = function(){

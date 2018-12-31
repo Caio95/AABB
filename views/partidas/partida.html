@@ -1,0 +1,28 @@
+<body ng-controller="partidaController">
+        <div class="row" id="tabela_partidas">
+                <div class="col-md-12" >
+                        <h3>Partidas</h3>
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <td>#</td>
+                                <td><b>Descrição</b></td>
+                                <td><b>Data e Hora</b></td>
+                                <td><b>Opção</b></td>
+                            </tr>
+                            <tr ng-repeat="partida in partidas">
+                                <td><span class="glyphicon glyphicon-flag"></span></td>
+                                <td>{{partida.descricaoPart}}</td>
+                                <td>{{partida.dataPartida}} às {{partida.horaPartida}}</td>
+                                <td>
+                                    <!-- <button type="button" class="btn btn-danger btn-xs" ng-click="excluir($index)">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </button> -->
+                                    <button type="button" class="btn btn-success btn-sm" ng-click="participar(partida)" >
+                                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Participar
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+        </div>
+</body>

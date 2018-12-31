@@ -20,7 +20,7 @@ angular.module('moduloDados',[])
 
             $scope.alterar = function(){
                 
-                $http.put('http://localhost/aabb/api/usuario/update.php',{
+                $http.post('http://localhost/aabb/api/usuario/update.php',{
                     'nome' : $scope.nome,
                     'endereco' : $scope.endereco,
                     'senha' : $scope.senha,
@@ -31,6 +31,12 @@ angular.module('moduloDados',[])
                     console.log(result);
                     
                 })
+            }
+
+            $scope.sair = function(){
+                $rootScope.usuario =false;
+                $location.path('/');
+                delete $localStorage.usuario;
             }
 
         } else{
