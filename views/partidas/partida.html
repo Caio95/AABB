@@ -1,28 +1,118 @@
+<style>
+        input::-webkit-datetime-edit{
+          min-width: 100%;
+          width: 100%;
+        }
+</style>
 <body ng-controller="partidaController">
-        <div class="row" id="tabela_partidas">
-                <div class="col-md-12" >
-                        <h3>Partidas</h3>
-                        <table class="table table-striped table-hover">
-                            <tr>
-                                <td>#</td>
-                                <td><b>Descrição</b></td>
-                                <td><b>Data e Hora</b></td>
-                                <td><b>Opção</b></td>
-                            </tr>
-                            <tr ng-repeat="partida in partidas">
-                                <td><span class="glyphicon glyphicon-flag"></span></td>
-                                <td>{{partida.descricaoPart}}</td>
-                                <td>{{partida.dataPartida}} às {{partida.horaPartida}}</td>
-                                <td>
-                                    <!-- <button type="button" class="btn btn-danger btn-xs" ng-click="excluir($index)">
-                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                    </button> -->
-                                    <button type="button" class="btn btn-success btn-sm" ng-click="participar(partida)" >
-                                        <span class="glyphicon glyphicon-flag" aria-hidden="true"></span> Participar
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id="dados_user">
+                        <form class="form-horizontal">
+                            <fieldset>
+                            
+                                <!-- Form Name -->
+                                <legend id="legenda">PARTIDA</legend>
+                                
+                                <!-- Text input-->
+                                
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">ID</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-asterisk"></span>
+                                            </div>
+                                            <input type="text" ng-model="codigo_partida" title="Código da Partida" class="form-control input-sm" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Descrição</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-flag"></i>
+                                            </div>
+                                            <input type="text" ng-model="descricao_partida" title="Descrição" class="form-control input-sm" disabled>                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" >Data</label>  
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </div>
+                                            <input type="date"class="form-control input-sm" title="Data da Partida" ng-value="data_partida" id="data_value_partida" disabled>                    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label" >Hora</label>  
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-time"></i>
+                                                </div>
+                                                <input type="time"class="form-control input-sm" title="Hora da Partida" ng-value="hora_partida" id="hora_value_partida" disabled>                    
+                                            </div>
+                                        </div>
+                                </div>
+                            
+                            </fieldset>
+                        </form>
+                    </div>
+                
                 </div>
-        </div>
+                <div class="row">
+                        <div id="tabela_jogadores">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <!-- Form Name -->
+                                    <legend id="legenda">JOGADORES INSCRITOS</legend>
+                                    <!-- Text input-->
+                                            <div class="table-responsive">
+                                                    <table class="table table-striped table-hover">
+                                                            <tr>
+                                                                <td><b>Nome</b></td>
+                                                                <td><b>Nível</b></td>
+                                                            </tr>
+                                                            <tr ng-repeat="jogador in jogadores">
+                                                                <td><span class="glyphicon glyphicon-user"></span> {{jogador.nomeUser}}</td>
+                                                                <td>{{jogador.nivelUser}}</td>
+                                                            </tr>
+                                                    </table>
+                                            </div>
+                                    
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <legend id="legenda">PLACAR</legend>
+                                 
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="row">
+                        <form class="form-horizontal">
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label" ></label>  
+                                        <div class="col-md-4">
+                                            <input type="submit" class="btn btn-success" ng-click="participar(codigo_partida)" value="Participar">  
+                                        </div>
+                                </div>
+                        </form>
+                    </div>
+            </div>
 </body>

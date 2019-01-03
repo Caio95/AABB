@@ -16,10 +16,14 @@ angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','modul
         templateUrl: 'views/dados/dados.html',
         controller: 'dadosController'
     })
-    .when('/partida',{
-        templateUrl: 'views/partidas/partida.html',
-        controller: 'partidaController'
+    .when('/partidas',{
+        templateUrl: 'views/partidas/partidas.html',
+        controller: 'partidasController'
     })
+    .when('/partida/:id', {
+		templateUrl: 'views/partidas/partida.html',
+		controller: 'partidaController'
+	})
     .when('/adm',{
         templateUrl: 'views/adm/adm.html',
         controller: 'admController'

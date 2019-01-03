@@ -77,8 +77,6 @@ Class Usuario {
             $query->execute(array($nivel, $idUser));
             $usuario = $query->fetch(PDO::FETCH_ASSOC);
             return $usuario;
-       
-
-
     }
+
 }

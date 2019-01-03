@@ -40,3 +40,27 @@
 #dataPartida{
     font-size: 7px !important;
 }
+
+#inicio_jogador {
+    padding-top: 70px !important;
+}
+ 
+#data_value_partidas {
+    width: 101px !important;
+}
+
+#hora_value_partidas {
+    width: 64px !important;
+}
+
+#data_value_partida{
+    width: 101px !important;
+}
+
+#hora_value_partida{
+    width: 64px !important;
+}
+#legenda {
+    color: blue !important;
+    font-style: italic;
+}

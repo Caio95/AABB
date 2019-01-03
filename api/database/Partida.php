@@ -1,4 +1,4 @@
-<?php
+<?php       //tabela partida
 require_once('Database.php');
 
 Class Partida {
@@ -30,7 +30,7 @@ Class Partida {
         $sql = 'SELECT * FROM partida WHERE idPartida = ?';
         $query = $pdo->prepare($sql);
         $query->execute(array($id));
-        $user = $query->fetch(PDO::FETCH_ASSOC);
+        $partida = $query->fetch(PDO::FETCH_ASSOC);
         return $partida;
     }
 
@@ -43,9 +43,9 @@ Class Partida {
         return $partida;
     }
 
-    public static function update_placar($placar_time1, $placar_time2, $idPartida){
+    public static function update_placar($gol1, $gol2, $idPartida){ 
         $pdo = Database::connection();
-        $sql = 'UPDATE partida SET placar_time1=?, placar_time2=? WHERE idPartida=?';
+        $sql = 'UPDATE partida SET gol1=?, gol2=? WHERE idPartida=?';
         $query = $pdo->prepare($sql);
         $query->execute(array($placar_time1, $placar_time2, $idPartida));
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
