@@ -43,6 +43,20 @@ angular.module('moduloAdm',[])
                     $scope.hora_partida = null
                 })
             }
+
+            $scope.cadastrar_campeonato = function(){
+                $http.post('http://localhost/aabb/api/campeonato/save.php',{
+                    'nome': $scope.nome_campeonato,
+                    'dataInicio': $scope.data_inicio_campeonato,
+                    'dataFim' : $scope.data_fim_campeonato
+                }).then(function(result){
+                    alert('Campeonato Cadastrado!');
+                    $('#cadastro_campeonato').modal('hide')
+                    $scope.nome_campeonato = null,
+                    $scope.data_inicio_campeonato = null,
+                    $scope.data_fim_campeonato = null
+                })
+            }
             
             $scope.sair = function(){
                 $rootScope.usuario =false;

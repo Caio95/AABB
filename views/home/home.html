@@ -11,28 +11,76 @@
                                 <!-- Text input-->
                                 
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="Nome">Nome</label>  
+                                    <label class="col-md-4 control-label">Nome</label>  
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                             </div>
-                                            <input type="text" placeholder="Nome completo" ng-model="nome" class="form-control input-md">
+                                            <input type="text" placeholder="Nome completo" ng-model="nome_user" class="form-control input-md" disabled>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- Text input-->
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="email">Nível Jogador</label>  
+                                    <label class="col-md-4 control-label">Nível Jogador</label>  
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="glyphicon glyphicon-star"></i>
                                             </div>
-                                            <input type="number" ng-value="nivel" class="form-control input-md" title="Nível do Jogador 0 a 5" disabled>                    
+                                            <input type="number" id="nivel_jogador" ng-value="nivel_user" class="form-control input-md" title="Nível do Jogador 0 a 5" disabled>                    
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label">Partidas Jogadas</label>  
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-flag"></i>
+                                                </div>
+                                                <input type="number" id="partidas_jogadas" ng-value="qt_partidas" class="form-control input-md" title="Partidas Jogadas" disabled>                    
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label">Gols</label>  
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                                </div>
+                                                <input type="number" id="gols_jogador" ng-value="qt_gols" class="form-control input-md" disabled>                    
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label">Cartões Amarelos</label>  
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-minus"></i>
+                                                </div>
+                                                <input type="number" id="cartao_amarelo" ng-value="qt_card_amarelo" class="form-control input-md" title="Cartões Amarelos" disabled>                    
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-4 control-label">Cartões Vermelhos</label>  
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-minus"></i>
+                                                </div>
+                                                <input type="number" id="cartao_vermelho" ng-value="qt_card_vermelho" class="form-control input-md" title="Cartões Vermelhos" disabled>                    
+                                            </div>
+                                        </div>
                                 </div>
                             </fieldset>
                         </form>

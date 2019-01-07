@@ -1,0 +1,95 @@
+<style>
+    input::-webkit-datetime-edit{
+      min-width: 100%;
+      width: 100%;
+    }
+</style>
+<body ng-controller="campeonatoController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="dados_campeonato">
+                <form class="form-horizontal">
+                    <fieldset>
+                    
+                        <!-- Form Name -->
+                        <legend id="legenda">CAMPEONATO</legend>
+                        
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">ID</label>  
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-asterisk"></span>
+                                    </div>
+                                    <input type="text" ng-model="codigo_campeonato" title="Código do Campeonato" class="form-control input-sm" id="id_campeonato" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Nome</label>  
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-flag"></i>
+                                    </div>
+                                    <input type="text" ng-model="nome_campeonato" title="Nome do Campeonato" class="form-control input-sm" disabled>                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" >Data de Inicio</label>  
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </div>
+                                    <input type="date"class="form-control input-sm" title="Data de Inicio" ng-value="dataInicio_campeonato" id="data_inicio_campeonato" disabled>                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                                <label class="col-md-4 control-label" >Data de Termino</label>  
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="glyphicon glyphicon-time"></i>
+                                        </div>
+                                        <input type="date"class="form-control input-sm" title="Data de Termino" ng-value="dataFim_campeonato" id="data_fim_campeonato" disabled>                    
+                                    </div>
+                                </div>
+                        </div>
+                    
+                    </fieldset>
+                    <fieldset>
+                        <legend id="legenda">PARTIDAS</legend>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                    <tr>
+                                        <td><b>Campeonato</b></td>
+                                        <!-- <td><b>Data</b></td>
+                                        <td><b>Hora</b></td> -->
+                                        <td><b>Opção</b></td>
+                                    </tr>
+                                    <tr ng-repeat="campeonato in campeonatos">
+                                        <td>{{campeonato.idCampeonato}}</td>
+                                        <td><i class="fas fa-trophy"></i> {{campeonato.nomeCampeonato}}</td>
+                                        <!-- <td> <input type="date" id="data_value_partidas" class="form-control" value="{{partida.dataPartida}}" title="Data da Partida" disabled></td>
+                                        <td><input type="time" id="hora_value_partidas" class="form-control" value="{{partida.horaPartida}}" title="Hora da Partida" disabled></td> -->
+                                        <td>
+                                            <a href="#/campeonato/{{campeonato.idCampeonato}}" type="button" class="btn btn-success btn-sm" title="Veja mais e participe"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver Mais</a>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

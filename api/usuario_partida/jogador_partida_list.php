@@ -1,7 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 
-require_once('../database/Time.php');
+require_once('../database/Usuario_partida.php');
 
 if (!isset($_GET['id'])) {
     echo '';
@@ -10,7 +10,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$jogadores = Time::jogadores_partida($id);
+$jogadores = Usuario_partida::jogadores_partida($id);
 
 echo json_encode($jogadores);
 

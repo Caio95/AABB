@@ -1,0 +1,3 @@
+ALTER TABLE tabela AUTO_INCREMENT = 1;  -- zerar auto incremento
+
+TRUNCATE tabela -- limpar todos os dados de uma tabela

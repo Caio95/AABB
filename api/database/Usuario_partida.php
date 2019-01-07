@@ -1,7 +1,7 @@
 <?php   //tabela usuario_partida
 require_once('Database.php');
 
-Class Time {
+Class Usuario_partida {
     public static function add($idUser, $idPartida){
         $pdo = Database::connection();
         $sql = 'INSERT INTO usuario_partida(idUser, idPartida) VALUES (?, ?)';

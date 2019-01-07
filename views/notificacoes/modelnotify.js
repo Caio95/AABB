@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('moduloHome',[])
+angular.module('moduloNotify',[])
     
-    .controller('homeController', function($rootScope, $scope, $http, $location, $localStorage){
-        $rootScope.pageTitle = 'AABB Esportivo | Inicio';
+    .controller('notificacaoController', function($rootScope, $scope, $http, $location, $localStorage){
+        $rootScope.pageTitle = 'AABB Esportivo | Notificações';
         
         if($localStorage.usuario){
             $rootScope.usuario = $localStorage.usuario;
             $rootScope.name = $localStorage.name;
-            $scope.nome_user = $localStorage.name;
+
             
             $scope.sair = function(){
                 $rootScope.usuario =false;

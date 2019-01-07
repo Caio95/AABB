@@ -1,6 +1,7 @@
 .navbar-default{
     height: 56px;
 }
+
 #logo{
     margin-top: 3px;
 }
@@ -25,6 +26,9 @@
     padding-top: 70px !important;
 }
 
+#dados_campeonato {
+    padding-top: 70px !important;
+}
 #opcoes_adm {
     padding-top: 70px !important;
 }
@@ -37,11 +41,19 @@
     padding-top: 70px !important;
 }
 
+#tabela_campeonatos {
+    padding-top: 70px !important;
+}
+
 #dataPartida{
     font-size: 7px !important;
 }
 
 #inicio_jogador {
+    padding-top: 70px !important;
+}
+
+#notificao_usuario {
     padding-top: 70px !important;
 }
  
@@ -60,7 +72,40 @@
 #hora_value_partida{
     width: 64px !important;
 }
+
+#data_inicio_campeonato{
+    width: 101px !important;
+}
+
+#data_fim_campeonato{
+    width: 101px !important;
+}
+
+#id_campeonato {
+    width: 64px !important;
+}
+
 #legenda {
     color: blue !important;
     font-style: italic;
+}
+
+#nivel_jogador {
+    width: 70px !important;
+}
+
+#partidas_jogadas {
+    width: 70px !important;
+}
+
+#gols_jogador {
+    width: 70px !important;
+}
+
+#cartao_amarelo {
+    width: 70px !important;
+}
+
+#cartao_vermelho {
+    width: 70px !important;
 }

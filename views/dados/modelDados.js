@@ -12,7 +12,6 @@ angular.module('moduloDados',[])
             .then(function(result){                
                 $scope.nome = result.data.nomeUser;
                 $scope.endereco = result.data.enderecoUser;
-                $scope.nivel = result.data.nivelUser;
                 $scope.telefone = result.data.telefoneUser;
                 $scope.email = result.data.emailUser;
                 $scope.senha = result.data.senhaUser;

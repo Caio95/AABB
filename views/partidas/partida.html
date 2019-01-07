@@ -7,7 +7,7 @@
 <body ng-controller="partidaController">
         <div class="container">
                 <div class="row">
-                    <div class="col-md-12" id="dados_user">
+                    <div class="col-md-12" id="dados_partida">
                         <form class="form-horizontal">
                             <fieldset>
                             
@@ -83,11 +83,9 @@
                                                     <table class="table table-striped table-hover">
                                                             <tr>
                                                                 <td><b>Nome</b></td>
-                                                                <td><b>Nível</b></td>
                                                             </tr>
                                                             <tr ng-repeat="jogador in jogadores">
                                                                 <td><span class="glyphicon glyphicon-user"></span> {{jogador.nomeUser}}</td>
-                                                                <td>{{jogador.nivelUser}}</td>
                                                             </tr>
                                                     </table>
                                             </div>
@@ -109,7 +107,7 @@
                                 <div class="form-group">
                                         <label class="col-md-4 control-label" ></label>  
                                         <div class="col-md-4">
-                                            <input type="submit" class="btn btn-success" ng-click="participar(codigo_partida)" value="Participar">  
+                                            <input type="submit" class="btn btn-success input-lg" ng-click="participar(codigo_partida)" value="Participar">  
                                         </div>
                                 </div>
                         </form>

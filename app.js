@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','moduloDados','moduloAdm','moduloPartida'])
+angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','moduloDados','moduloAdm','moduloCampeonato','moduloPartida','moduloNotify'])
 .config(function($routeProvider, $locationProvider){
     $locationProvider.hashPrefix('');
     $routeProvider
@@ -16,6 +16,14 @@ angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','modul
         templateUrl: 'views/dados/dados.html',
         controller: 'dadosController'
     })
+    .when('/campeonatos',{
+        templateUrl: 'views/campeonato/campeonatos.html',
+        controller: 'campeonatosController'
+    })
+    .when('/campeonato/:id', {
+        templateUrl: 'views/campeonato/campeonato.html',
+        controller: 'campeonatoController'
+    })
     .when('/partidas',{
         templateUrl: 'views/partidas/partidas.html',
         controller: 'partidasController'
@@ -23,7 +31,11 @@ angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','modul
     .when('/partida/:id', {
 		templateUrl: 'views/partidas/partida.html',
 		controller: 'partidaController'
-	})
+    })
+    .when('/notificacoes',{
+        templateUrl: 'views/notificacoes/notificacoes.html',
+		controller: 'notificacaoController'
+    })
     .when('/adm',{
         templateUrl: 'views/adm/adm.html',
         controller: 'admController'
