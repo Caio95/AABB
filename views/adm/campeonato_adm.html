@@ -1,20 +1,11 @@
-<style>
-    input::-webkit-datetime-edit{
-      min-width: 100%;
-      width: 100%;
-    }
-</style>
-<body ng-controller="campeonatoController">
+<body ng-controller="campeonatoAdmController">
     <div class="container">
         <div class="row">
-            <div class="col-md-12" id="dados_campeonato">
+            <div class="col-md-12" id="dados_campeonato_adm">
                 <form class="form-horizontal">
                     <fieldset>
-                    
-                        <!-- Form Name -->
-                        <legend id="legenda">CAMPEONATO</legend>
+                        <legend id="legenda">DADOS DO CAMPEONATO</legend>
                         
-                        <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">ID</label>  
                             <div class="col-md-4">
@@ -27,20 +18,18 @@
                             </div>
                         </div>
 
-                        <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label">Nome</label>  
                             <div class="col-md-4">
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="glyphicon glyphicon-flag"></i>
+                                        <i class="fa fa-trophy"></i>
                                     </div>
-                                    <input type="text" ng-model="nome_campeonato" title="Nome do Campeonato" class="form-control input-sm" disabled>                    
+                                    <input type="text" ng-model="nome_campeonato" title="Nome do Campeonato" class="form-control input-sm" >                    
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Text input-->
                         <div class="form-group">
                             <label class="col-md-4 control-label" >Data de Inicio</label>  
                             <div class="col-md-4">
@@ -48,7 +37,7 @@
                                     <div class="input-group-addon">
                                         <i class="glyphicon glyphicon-calendar"></i>
                                     </div>
-                                    <input type="date" class="form-control input-sm" title="Data de Inicio" ng-value="dataInicio_campeonato" id="data_inicio_campeonato" disabled>                    
+                                    <input type="date" class="form-control input-sm" title="Data de Inicio" ng-value="dataInicio_campeonato">                    
                                 </div>
                             </div>
                         </div>
@@ -60,30 +49,38 @@
                                         <div class="input-group-addon">
                                             <i class="glyphicon glyphicon-calendar"></i>
                                         </div>
-                                        <input type="date" class="form-control input-sm" title="Data de Termino" ng-value="dataFim_campeonato" id="data_fim_campeonato" disabled>                    
+                                        <input type="date" class="form-control input-sm" title="Data de Termino" ng-value="dataFim_campeonato">                    
                                     </div>
                                 </div>
                         </div>
-
                         <div class="form-group">
-                                <label class="col-md-4 control-label" >Inscritos</label>  
+                                <label class="col-md-4 control-label" >Status</label>  
                                 <div class="col-md-4">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="glyphicon glyphicon-user"></i>
+                                            <i class="glyphicon glyphicon-stats"></i>
                                         </div>
-                                        <input type="number" class="form-control input-sm" title="Inscritos no Campeonato" ng-value="inscritos" id="inscritos_campeonato" disabled>                    
+                                        <select ng-model="status_campeonato" class="btn btn-default">
+                                            <option value="0">Andamento</option>
+                                            <option value="-1">Finalizado</option>
+                                        </select>                   
                                     </div>
                                 </div>
                         </div>
 
                         <div class="form-group">
-                                <label class="col-md-4 control-label" ></label> 
-                            <div class="col-md-4"> 
-                                <input type="button" class="btn btn-success" value="Participar" ng-click="participar()">
+                            <label class="col-md-5 control-label" ></label>  
+                            <div class="col-md-5">
+                                <input type="submit" class="btn btn-success" ng-click="alterar_campeonato()" value="Alterar Dados">  
                             </div>
                         </div>
                     
+                    </fieldset>
+                    <fieldset>
+                        <legend id="legenda">JOGADORES INSCRITOS</legend>
+                        <div class="list-group" ng-repeat="usuario in usuarios">
+                            <a href="#" class="list-group-item">{{partida.descricaoPart}}</a>
+                        </div>
                     </fieldset>
                 </form>
             </div>

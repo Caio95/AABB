@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('moduloDados',[])
-    .controller('dadosController', function($rootScope, $scope, $http, $location, $localStorage){
+angular.module('moduloDados',['ui-notification'])
+    .controller('dadosController', function($rootScope, $scope, $http, $location, $localStorage, Notification){
         $rootScope.pageTitle = 'AABB Esportivo | Meus Dados';
 
         if($localStorage.usuario){
@@ -26,10 +26,13 @@ angular.module('moduloDados',[])
                     'telefone' : $scope.telefone,
                     'idUser' : $localStorage.usuario         
                 }).then(function(result){
-                    alert('alterado com sucesso!');
-                    console.log(result);
+                    Notification.primary('alterado com sucesso!');
                     
                 })
+            }
+
+            $scope.cancelar = function() {
+                $location.path('/inicio');
             }
 
             $scope.sair = function(){

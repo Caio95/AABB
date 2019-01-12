@@ -20,7 +20,14 @@ Class Campeonato {
 
     public static function all(){
         $pdo = Database::connection();
-        $sql = 'SELECT * FROM campeonato';
+        $sql = 'SELECT * FROM campeonato WHERE status = 0';
+        $query = $pdo->query($sql);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function all_finalizado(){
+        $pdo = Database::connection();
+        $sql = 'SELECT * FROM campeonato WHERE status = -1';
         $query = $pdo->query($sql);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -34,13 +41,13 @@ Class Campeonato {
         return $campeonato;
     }
 
-    public static function update($nome, $dataInicio, $dataFim, $idCampeonato){
+    public static function update($nome, $dataInicio, $dataFim, $status, $idCampeonato){
         $pdo = Database::connection();
-        $sql = 'UPDATE campeonato SET nome=?, dataInicio=?, dataFim=? WHERE idCampeonato=?';
+        $sql = 'UPDATE campeonato SET nomeCampeonato=?, dataInicio=?, dataFim=?, status=? WHERE idCampeonato=?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($descricao, $data, $hora, $idPartida));
-        $usuario = $query->fetch(PDO::FETCH_ASSOC);
-        return $partida;
+        $query->execute(array($nome, $dataInicio, $dataFim, $status, $idCampeonato));
+        $campeonato = $query->fetch(PDO::FETCH_ASSOC);
+        return $campeonato;
     }
 
 }

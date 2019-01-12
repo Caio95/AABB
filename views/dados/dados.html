@@ -4,7 +4,6 @@
                     <div class="col-md-12" id="dados_user">
                         <form class="form-horizontal">
                             <fieldset>
-                            
                                 <!-- Form Name -->
                                 <legend id="legenda">DADOS CADASTRAIS</legend>
                                 
@@ -21,18 +20,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- File Button   image/png -->
-                                <!-- <div class="form-group">
-                                    <label class="col-md-4 control-label" for="Upload photo">Carregar foto de Perfil</label>
-                                    <div class="btn-group">
-                                        <div flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)">
-                                            <button flow-btn type="file" class="btn btn-primary"><span class="glyphicon glyphicon-folder-open" accept="image/jpeg"></span>  Carregar Foto</button>
-                                            <button type="submit" class="btn btn-success" ng-click="alterar_foto()"><span class="glyphicon glyphicon-floppy-save"></span> Salvar Foto</button>
-                                        </div>
-                                    </div>
-                                
-                                </div>  -->
+
 
                                 <!-- Text input-->
                                 <div class="form-group">
@@ -86,21 +74,16 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" ></label>  
-                                    <div class="col-md-4">
-                                        <input type="submit" class="btn btn-success" ng-click="alterar()" value="Alterar">  
+                                    <label class="col-md-5 control-label" ></label>  
+                                    <div class="col-md-5">
+                                            <input type="submit" class="btn btn-success" ng-click="alterar()" value="Alterar">  
+                                            <input type="submit" class="btn btn-danger" ng-click="cancelar()" value="Cancelar">  
                                     </div>
                                 </div>
                             
                             </fieldset>
                         </form>
                     </div>
-                    <div class="col-md-2 hidden-xs">
-                    <!-- <img src="http://websamplenow.com/30/userprofile/images/avatar.jpg" class="img-responsive img-thumbnail" ng-hide="!fotoPerfil">  -->
-                    <!-- <img ng-src="{{fotoPerfil}}" class="img-responsive img-thumbnail"> -->
-                    </div>
-                
-                
                 </div>
             </div>
 </body>

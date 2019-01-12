@@ -1,0 +1,61 @@
+<body ng-controller="adm_desativaController">
+    <div class="container">
+        <div class="row" id="desativa_usuario_adm">
+            <div class="col-md-12">
+                    <form class="form-horizontal">
+                        <fieldset>
+                                <legend id="legenda">DESATIVAR JOGADORES</legend>
+                                
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Buscar por...">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button">Pesquisar</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div> 
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                            <tr>
+                                                                <td><b>Nome</b></td>
+                                                                <td><b>Endereço</b></td>
+                                                                <td><b>Telefone</b></td>
+                                                                <td><b>Situação</b></td>
+                                                            </tr>
+                                                            <tr ng-repeat="usuario in usuarios">
+                                                                <td>{{usuario.nomeUser}}</td>
+                                                                <td>{{usuario.enderecoUser}}</td>
+                                                                <td>{{usuario.telefoneUser}}</td>
+                                                                <td>
+                                                                    <select ng-model="usuario.desativaUser" class="btn btn-default">
+                                                                        <option value="0">Ativado</option>
+                                                                        <option value="-1">Desativado</option>
+                                                                    </select>
+                                                                    <button class="btn btn-warning left" title="Salvar" ng-click="desativar_user(usuario)">
+                                                                            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                    </table>
+                                                </div>
+                                            </div> <!--input-group-addon-->
+                                        </div>
+                                    </div>
+                                </div>         
+                        </fieldset>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+</body>

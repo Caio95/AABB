@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('moduloLogin',[])
-    .controller('loginController', function($rootScope, $scope, $http, $location, $localStorage){
+angular.module('moduloLogin',['ui-notification'])
+    .controller('loginController', function($rootScope, $scope, $http, $location, $localStorage, Notification){
         $rootScope.pageTitle = 'AABB Esportivo | entre ou cadastre-se';
         $rootScope.usuario = false;
 
@@ -50,6 +50,7 @@ angular.module('moduloLogin',[])
                             'senha' : $scope.senha,
                             'telefone' : $scope.telefone
                         }).then(function(result){
+                            Notification.success('Cadastrado Com sucesso!')
                             $scope.nome = null;
                             $scope.email = null;
                             $scope.endereco = null;
@@ -63,8 +64,7 @@ angular.module('moduloLogin',[])
                 }
             } else{
                 $('#emailErr').show('in');
-            }
-              alert('Cadastrado Com sucesso!');          
+            }    
         }
 
         function validar(senha1,senha2){

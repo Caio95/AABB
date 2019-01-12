@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('moduloPartida',[])
+angular.module('moduloPartida',['ui-notification'])
     
     .controller('partidasController', function($rootScope, $scope, $http, $location, $localStorage){
         $rootScope.pageTitle = 'AABB Esportivo | Partidas';
@@ -26,7 +26,7 @@ angular.module('moduloPartida',[])
         
     })
 
-    .controller('partidaController', function($rootScope, $scope, $http, $location, $localStorage, $routeParams){
+    .controller('partidaController', function($rootScope, $scope, $http, $location, $localStorage, $routeParams, Notification){
 
         if($localStorage.usuario){
                 $http.get('http://localhost/aabb/api/partida/find.php?id='+ $routeParams.id)
@@ -53,10 +53,10 @@ angular.module('moduloPartida',[])
                             'idUser' : $rootScope.usuario,
                             'idPartida' : partida.idPartida
                         }).then(function(result){
-                            alert('Usuário cadastrado na partida: '+ partida.descricaoPart);
+                            Notification.success('Usuário cadastrado na partida: '+ partida.descricaoPart);
                         })
                     } else{
-                            alert('Usuário já está inscrito na partida!');
+                            Notification.warning('Usuário já está inscrito na partida!');
                     }
     
                 }

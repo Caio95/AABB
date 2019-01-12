@@ -1,0 +1,53 @@
+<body ng-controller="admController">
+    <div class="container">
+            <div class="row"  id="nivel_jogador_adm">
+                <div class="col-md-12">
+                    <form class="form-horizontal">
+                        <fieldset>
+                                <legend id="legenda">ALTERAR NIVEL DOS JOGADORES</legend>
+                                
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                         <div class="input-group">
+                                             <div class="input-group-addon">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Buscar por...">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button">Pesquisar</button>
+                                                        </span>
+                                                    </div>
+                                             </div>
+                                         </div>
+                                    </div> 
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <td><b>Nome</b></td>
+                                                        <td><b>Endereço</b></td>
+                                                        <td><b>Telefone</b></td>
+                                                        <td><b>Nível Jogador</b></td>
+                                                    </tr>
+                                                    <tr ng-repeat="usuario in usuarios">
+                                                        <td>{{usuario.nomeUser}}</td>
+                                                        <td>{{usuario.enderecoUser}}</td>
+                                                        <td>{{usuario.telefoneUser}}</td>
+                                                        <td><input id="input_nivel" type="number" ng-change="getValor(nv)" ng-model="nv" class="btn btn-default" ng-value={{usuario.nivelUser}} min="0" max="5">
+                                                            <button type="button" class="btn btn-info left" ng-click="editar(usuario)" title="Salvar Nível">
+                                                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                                                                </button></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>         
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>

@@ -11,10 +11,11 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-3dkvEK0WLHRJ7/Csr0BZjAWxERc5WH7bdeUya2aXxdU= sha512-+L4yy6FRcDGbXJ9mPG8MT/3UCDzwR9gPeyFNMCtInsol++5m3bk2bXWKdZjvybmohrAsn3Ua5x8gfLnbE1YkOg==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="node_modules/angular-ui-notification/dist/angular-ui-notification.min.css" />
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <script src="node_modules/jquery/dist/jquery.min.js" crossorigin="anonymous"></script>
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-notification/dist/angular-ui-notification.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/ngstorage/ngStorage.min.js"></script>
@@ -29,7 +30,7 @@
     <script src="views/campeonato/modelCampeonato.js"></script>
 </head>
 <body ng-controller="homeController">
-    <nav class="navbar navbar-default navbar-fixed-top" ng-hide="!usuario">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-hide="!usuario || usuario==1">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
@@ -77,6 +78,54 @@
                     </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
     </nav>
+    <nav class="navbar navbar-default navbar-fixed-top" ng-hide="usuario!=1">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-adm" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+              <a class="navbar-brand" href="#"><img src="img/logo_inicial_sp_50.png" alt="AABB Palmas Espotivo" id="logo"></a>
+            </div>
+        
+            <div class="collapse navbar-collapse" id="navbar-adm">
+              <ul class="nav navbar-nav">
+                  <li class="active"><a href="#/inicio_adm">Inicio <span class="sr-only">(current)</span></a></li>
+                  <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campeonato<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                          <li><a href="#/cadastro_campeonato">Cadastrar</a></li>
+                          <li><a href="#/campeonatos_andamento">Campeonatos ativos</a></li>
+                          <li><a href="#/campeonatos_finalizados">Campeonatos finalizados</a></li>
+
+                    </ul>
+                </li>
+
+                  <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jogadores<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                          <li><a href="#/nivel_jogador">Alterar Nível</a></li>
+                          <li><a href="#/desativa_user">Desativar Jogador</a></li>
+                    </ul>  
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{name}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#/dados"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Meus Dados</a></li>
+                    <li><a href="#/notificacoes"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Avisos</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#" ng-click="sair()"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+</nav>
     <div class="container-fluid">
             <div ng-view></div>   
     </div>

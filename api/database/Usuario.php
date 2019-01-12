@@ -28,7 +28,7 @@ Class Usuario {
 
     public static function all(){
         $pdo = Database::connection();
-        $sql = 'SELECT * FROM usuario';
+        $sql = 'SELECT * FROM usuario WHERE idUser > 1';
         $query = $pdo->query($sql);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -71,12 +71,20 @@ Class Usuario {
 
     public static function update_nivel($nivel, $idUser){
         $pdo = Database::connection();
-    
-            $sql = 'UPDATE usuario SET nivelUser=? WHERE idUser=?';
-            $query = $pdo->prepare($sql);
-            $query->execute(array($nivel, $idUser));
-            $usuario = $query->fetch(PDO::FETCH_ASSOC);
-            return $usuario;
+        $sql = 'UPDATE usuario SET nivelUser=? WHERE idUser=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($nivel, $idUser));
+        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        return $usuario;
+    }
+
+    public static function desativar_usuario($desativa, $idUser){
+        $pdo = Database::connection();
+        $sql = 'UPDATE usuario SET desativaUser=? WHERE idUser=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($desativa, $idUser));
+        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        return $usuario;
     }
 
 }

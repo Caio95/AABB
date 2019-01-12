@@ -29,11 +29,24 @@
 #dados_campeonato {
     padding-top: 70px !important;
 }
-#opcoes_adm {
+
+#nivel_jogador_adm {
     padding-top: 70px !important;
 }
 
-#pesquisa_jogador{
+#desativa_usuario_adm {
+    padding-top: 70px !important;
+}
+
+#campeonatos_finalizados_adm {
+    padding-top: 70px !important;
+}
+
+#dados_campeonato_adm {    
+    padding-top: 70px !important;
+}
+
+#campeonatos_adm{
     padding-top: 70px !important;
 }
 
@@ -57,6 +70,10 @@
     padding-top: 70px !important;
 }
  
+#cadastro_campeonato {
+    padding-top: 70px !important;
+}
+
 #data_value_partidas {
     width: 101px !important;
 }
@@ -79,6 +96,10 @@
 
 #data_fim_campeonato{
     width: 101px !important;
+}
+
+#inscritos_campeonato{
+    width: 64px !important;
 }
 
 #id_campeonato {

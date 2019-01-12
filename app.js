@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','moduloDados','moduloAdm','moduloCampeonato','moduloPartida','moduloNotify'])
+angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','moduloDados','moduloAdm',
+'moduloCampeonato','moduloPartida','moduloNotify'])
 .config(function($routeProvider, $locationProvider){
     $locationProvider.hashPrefix('');
     $routeProvider
@@ -35,10 +36,35 @@ angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','modul
     .when('/notificacoes',{
         templateUrl: 'views/notificacoes/notificacoes.html',
 		controller: 'notificacaoController'
-    })
-    .when('/adm',{
-        templateUrl: 'views/adm/adm.html',
+    })  
+    //administrador 
+    .when('/inicio_adm', {
+        templateUrl: 'views/adm/inicio_adm.html',
         controller: 'admController'
+    })
+    .when('/nivel_jogador',{
+        templateUrl: 'views/adm/nivel_jogador.html',
+        controller: 'admController'
+    })
+    .when('/desativa_user', {
+        templateUrl: 'views/adm/desativa_user.html',
+        controller: 'adm_desativaController'
+    })
+    .when('/cadastro_campeonato', {
+        templateUrl: 'views/adm/cadastro_campeonato.html',
+        controller: 'admController'
+    })
+    .when('/campeonatos_andamento', {
+        templateUrl: 'views/adm/campeonatos_adm.html',
+        controller: 'campeonatosAdmController'
+    })
+    .when('/campeonato_adm/:id', {
+        templateUrl: 'views/adm/campeonato_adm.html',
+        controller: 'campeonatoAdmController'
+    })
+    .when('/campeonatos_finalizados',{
+        templateUrl: 'views/adm/campeonatos_adm_finalizados.html',
+        controller: 'campeonatos_finalizadoController'
     })
     .otherwise({
         redirectTo: '/'
