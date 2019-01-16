@@ -41,11 +41,11 @@ Class Campeonato {
         return $campeonato;
     }
 
-    public static function update($nome, $dataInicio, $dataFim, $status, $idCampeonato){
+    public static function update($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato){
         $pdo = Database::connection();
-        $sql = 'UPDATE campeonato SET nomeCampeonato=?, dataInicio=?, dataFim=?, status=? WHERE idCampeonato=?';
+        $sql = 'UPDATE campeonato SET nomeCampeonato=?, dataInicio=?, dataFim=?, encerraInscricoes=?, status=? WHERE idCampeonato=?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($nome, $dataInicio, $dataFim, $status, $idCampeonato));
+        $query->execute(array($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato));
         $campeonato = $query->fetch(PDO::FETCH_ASSOC);
         return $campeonato;
     }

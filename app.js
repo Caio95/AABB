@@ -1,5 +1,7 @@
 'use strict';
 
+// var API_BASE = '/localhost/api/';
+
 angular.module('aabb', ['ngRoute','ngStorage', 'moduloLogin','moduloHome','moduloDados','moduloAdm',
 'moduloCampeonato','moduloPartida','moduloNotify'])
 .config(function($routeProvider, $locationProvider){

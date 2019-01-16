@@ -29,8 +29,8 @@ Class Usuario_partida {
         $pdo = Database::connection();
         $sql = 'SELECT * FROM usuario_partida WHERE idPartida = ?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($id));
-        $user = $query->fetch(PDO::FETCH_ASSOC);
+        $query->execute(array($idPartida));
+        $partida = $query->fetch(PDO::FETCH_ASSOC);
         return $partida;
     }
 

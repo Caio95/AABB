@@ -8,7 +8,12 @@ angular.module('moduloHome',[])
         if($localStorage.usuario){
             $rootScope.usuario = $localStorage.usuario;
             $rootScope.name = $localStorage.name;
-            $scope.nome_user = $localStorage.name;
+            
+            $http.get('http://localhost/aabb/api/usuario/find.php?id='+ $localStorage.usuario)
+            .then(function(result){                
+                $scope.nome_user = result.data.nomeUser;
+                $scope.nivel_user = result.data.nivelUser;
+            })
             
             $scope.sair = function(){
                 $rootScope.usuario =false;

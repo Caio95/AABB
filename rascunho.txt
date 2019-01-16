@@ -1,3 +1,23 @@
 ALTER TABLE tabela AUTO_INCREMENT = 1;  -- zerar auto incremento
 
 TRUNCATE tabela -- limpar todos os dados de uma tabela
+
+
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 1','asds', 'fulano1@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 2','asds', 'fulano2@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 3','as', 'fulano3@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 4','as', 'fulano4@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 5','as', 'fulano5@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 6','as', 'fulano6@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 7','as', 'fulano7@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 8','as', 'fulano8@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 9','as', 'fulano9@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 10','as', 'fulano10@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 11','as', 'fulano11@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 12','as', 'fulano12@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 13','as', 'fulano13@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 14','as', 'fulano14@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 15','as', 'fulano15@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 16','as', 'fulano16@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 17','as', 'fulano17@fulano',123,321);
+INSERT INTO usuario (nomeUser,enderecoUser, emailUser, senhaUser, telefoneUser) VALUES ('fulano 18','as', 'fulano18@fulano',123,321);

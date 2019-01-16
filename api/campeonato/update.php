@@ -12,10 +12,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $request->nome;
     $dataInicio = $request->dataInicio;
     $dataFim = $request->dataFim;
+    $encerraInscricoes = $request->encerraInscricoes;
     $status = $request->status;
     $idCampeonato = $request->idCampeonato;
 
-    $campeonato = Campeonato::update($nome, $dataInicio, $dataFim, $status, $idCampeonato);
+    $campeonato = Campeonato::update($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato);
 
     if($campeonato) {
         echo json_encode($campeonato);

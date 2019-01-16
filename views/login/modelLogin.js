@@ -24,8 +24,14 @@ angular.module('moduloLogin',['ui-notification'])
                     if(result.data != 'false'){
                         $rootScope.usuario = result.data;
                         $localStorage.usuario = result.data.idUser;
-                        $localStorage.name = result.data.nomeUser;
-                        $location.path('/inicio');
+                        if($localStorage.usuario == 1){  // altenticacao usuario administrador
+                            $localStorage.name = result.data.nomeUser;
+                            $location.path('/inicio_adm');
+                        }else{
+                            $localStorage.name = result.data.nomeUser;  // usuario comum 
+                            $location.path('/inicio');
+                        }
+
                     } else{
                         $('#senhaErr').show('in');
                     }

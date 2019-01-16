@@ -11,10 +11,7 @@
                                          <div class="input-group">
                                              <div class="input-group-addon">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Buscar por...">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-default" type="button">Pesquisar</button>
-                                                        </span>
+                                                        <input type="text" class="form-control" ng-model="q" placeholder="Pesquisar...">
                                                     </div>
                                              </div>
                                          </div>
@@ -31,7 +28,7 @@
                                                         <td><b>Telefone</b></td>
                                                         <td><b>Nível Jogador</b></td>
                                                     </tr>
-                                                    <tr ng-repeat="usuario in usuarios">
+                                                    <tr ng-repeat="usuario in usuarios | filter:q | orderBy: q">
                                                         <td>{{usuario.nomeUser}}</td>
                                                         <td>{{usuario.enderecoUser}}</td>
                                                         <td>{{usuario.telefoneUser}}</td>
