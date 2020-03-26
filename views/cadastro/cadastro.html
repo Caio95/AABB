@@ -1,0 +1,66 @@
+<link rel="stylesheet" type="text/css" href="views/login/style.css">
+<body ng-controller="cadastroController"  class="cyan" >
+    <center  id="cadastro" >
+        <img class="responsive-img" style="width: 150px;" src="img/logo_esp_azul.png" /><br>
+            
+        <div class="row">
+                <div class="col s12 z-depth-4 card-panel" >
+                <form class="container">
+                    <div class="row">
+                        <div class="input-field col s12 center">
+                            <h4>Cadastre-se</h4>
+                            <p class="center">Participe agora!</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="nome">
+                            <label for="icon_prefix">Nome</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">contact_phone</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="telefone">
+                            <label for="icon_prefix">Telefone</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">contact_mail</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="email">
+                            <label for="icon_prefix">E-mail</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="icon_prefix" type="password" class="validate" ng-model="senha">
+                            <label for="icon_prefix">Senha</label>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input id="icon_prefix" type="password" class="validate" ng-model="senha2">
+                                <label for="icon_prefix">Confirmação de senha</label>
+                            </div>
+                        </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                        <button ng-click="cadastrar()" class="btn waves-effect waves-light col s12">Cadastrar</button>
+                    </div>
+                    <div class="input-field col s12">
+                        <p class="margin center medium-small sign-up">Já possui conta? <a href="#/">Login</a></p>
+                    </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+    </center>
+
+</body>
+
+  

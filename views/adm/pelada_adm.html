@@ -1,0 +1,210 @@
+<body ng-controller="peladaAdmController">
+    <ul class="collapsible popout">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">description</i>Dados da Pelada</div>
+            <div class="collapsible-body">
+                    <div class="row"> 
+                        <div class="input-field col s12">
+                            <i class="fa fa-futbol-o prefix"></i>
+                            <input type="text" class="validate" title="Nome da Pelada" ng-model="nome_pelada" ng-disabled="desabilitar">
+                            <label for="icon_prefix" class="active">Nome</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">description</i>
+                            <textarea  class="materialize-textarea" title="Descrição da Pelada" ng-model="descricao_pelada" ng-disabled="desabilitar"></textarea>
+                            <label for="icon_prefix" class="active">Descrição</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="date" class="validate" title="Data de Inicio" ng-model="dataInicio_pelada" value="{{dataInicio_pelada | date: 'yyyy-MM-dd'}}" ng-disabled="desabilitar">
+                            <label for="icon_prefix" class="active">Data de Inicio</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s10">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="date" class="validate" title="Data de Termino" ng-model="dataFim_pelada" value="{{dataFim_pelada | date: 'yyyy-MM-dd'}}" ng-disabled="desabilitar">
+                            <label for="icon_prefix" class="active">Data de Termino</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5" >
+                            <select class="browser-default" ng-model="encerraInscricao" ng-disabled="desabilitar">
+                                <option value="0">Abertas</option>
+                                <option value="-1">Encerradas</option>
+                            </select>
+                            <label for="icon_prefix" class="active">Inscrições</label>
+                        </div>
+                        <div class="input-field col s5" >
+                            <select class="browser-default" ng-model="status_pelada" ng-disabled="desabilitar">
+                                <option value="0">Em andamento</option>
+                                <option value="-1">Finalizado</option>
+                            </select>    
+                            <label for="icon_prefix" class="active">Pelada</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field s12 center">
+                            <a class="waves-effect waves-light btn modal-trigger #ffca28 amber lighten-1" href="#inscritos">
+                                <i class="material-icons left">group</i>Inscritos <span class="new badge #1a237e indigo darken-4" data-badge-caption="{{inscritos.length}}"></span>
+                            </a>
+                            <button class="waves-effect waves-light btn #1a237e indigo darken-4" ng-click="alterar_pelada()" ng-disabled="desabilitar">Alterar Dados</button>
+                        </div>
+                    </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">settings</i>Configuração de Time</div>
+            <div class="collapsible-body">
+                <div class="row center">
+                    <button class="waves-effect waves-light btn #1a237e indigo darken-4 modal-trigger" href="#sorteio" ng-disabled="desabilitar">Sortear Times</button>
+                </div>
+                <div class="row center">
+                    <button class="waves-effect waves-light btn #1a237e indigo darken-4 modal-trigger" href="#cad_time" ng-disabled="desabilitar">Cadastrar Time</button>
+                </div>
+                <div class="row center">
+                    <button class="waves-effect waves-light btn #1a237e indigo darken-4 modal-trigger" href="#times" ng-disabled="desabilitar">Times</button>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="fa fa-futbol-o"></i>Partidas</div>
+            <div class="collapsible-body">
+                <a class="waves-effect waves-light btn-small green modal-trigger" href="#partida" id="addPartida" ng-disabled="desabilitar"><i class="material-icons left">add</i>Adicionar</a>
+                <div class="container">
+                    <ul class="collection">
+                        <li class="collection-item avatar" ng-repeat="partida in partidas" id="partidas_camp_adm">
+                            <a href="#/pelada_adm/{{idPelada}}/partida_adm/{{partida.idPartida}}" title="Ver mais detalhes">
+                                <img src="img/partida.png" class="circle">
+                                <span class="title"><b>{{partida.descricaoPart}}</b></span>
+                                <p></p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+
+            <div id="inscritos" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h5>Jogadores Inscritos</h5>
+                    <ul class="collection" ng-repeat="jogador in inscritos">
+                        <li class="collection-item avatar">
+                            <img ng-src="{{jogador.foto_perfil}}" alt="" class="circle">
+                            <span class="title"><b>{{jogador.nomeUser}}</b></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat">Fechar</button>
+                </div>
+            </div>
+
+            <div id="cad_time" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h5>Cadastrar Time</h5>
+                    <p>Selecione 10 jogadores presentes para formar o time</p>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">group</i>
+                        <input type="text" class="validate" title="Nome do Campeonato" ng-model="nome_time">
+                        <label for="icon_prefix">Nome do Time</label>   
+                    </div>
+                    <p ng-repeat="jogador in jogadores">
+                        <label>
+                            <input type="checkbox" ng-change="sync(bool, jogador.idUser)" ng-model="bool" ng-checked="isChecked(jogador.idUser)"/>
+                            <span><b>{{$index+1}} - {{jogador.nomeUser}}</b></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <span class="badge left">{{selecionados.length}} Selec(s)</span>
+                    <button type="button" class="waves-effect waves-light btn #ffab00 amber accent-4" ng-click="cad_time()">Cadastrar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat">Fechar</button>
+                </div>
+            </div>
+
+            <div id="sorteio" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h5>Frequência <span class="badge">{{selecionados.length}} Selecionado(s)</span></h5>
+                    <p style="font-size:10.5px;">Selecione os 20 primeiros jogadores presentes</p>
+                    <p ng-repeat="jogador in jogadores">
+                        <label>
+                          <input type="checkbox" ng-change="sync(bool, jogador.idUser)" ng-model="bool" ng-checked="isChecked(jogador.idUser)"/>
+                          <span><b>{{$index+1}} - {{jogador.nomeUser}}</b></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="waves-effect waves-light btn-small #1a237e indigo darken-4" ng-click="selec_20()">Selec. 20</button> -->
+                    <button type="button" class="waves-effect waves-light btn-small" ng-click="sortear_times()"> Sortear</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-small btn-flat">Fechar</button>
+                </div>
+            </div>
+
+            <div id="partida" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Cadastrar Partida</h4>
+                    <p>Preencha os dados para cadastra a partida</p>
+                    <form>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="fa fa-futbol-o prefix"></i>
+                                <input id="icon_prefix" type="text" class="validate" ng-model="desc_partida">
+                                <label for="icon_prefix">Descrição</label>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input type="date" class="validate" ng-model="data_partida">
+                                    <label for="icon_prefix" class="active">Data</label>   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s10">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input type="time" class="validate" ng-model="hora_partida">
+                                    <label for="icon_prefix" class="active">Hora</label>   
+                                </div>
+                            </div>
+                            <h6>Disputa:</h6>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select ng-model="time1" class="browser-default" >
+                                        <option value="">Selecione...</option>
+                                        <option  ng-repeat="time in times" value="{{time.idTime}}">{{time.nomeTime}}</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select ng-model="time2" class="browser-default" >
+                                        <option value="">Selecione...</option>
+                                        <option  ng-repeat="time in times" value="{{time.idTime}}">{{time.nomeTime}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="waves-effect waves-light btn" ng-click="cad_partida()"> Cadastrar</button>
+                    <button type="button" class="modal-close waves-effect waves-green btn-flat">Fechar</button>
+                </div>
+            </div>
+            <!-- Modal Structure -->
+            <div id="times" class="modal modal-fixed-footer">
+              <div class="modal-content">
+                <h4>Configurar Time</h4>
+                <p>Selecione o time para fazer as alterações</p>
+                <div class="collection" ng-repeat="t in times">
+                    <a href="#/time/{{t.idTime}}" class="collection-item">{{t.nomeTime}}</a>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <a href="" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+              </div>
+            </div>
+    </ul>
+</body>

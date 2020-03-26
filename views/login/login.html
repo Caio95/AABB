@@ -1,102 +1,50 @@
 <link rel="stylesheet" type="text/css" href="views/login/style.css">
-<script src="node_modules/js/bootstrap-formhelpers.min.js"></script>
-<body ng-controller="loginController">
-        <div class="container-fluid">
-                <div class="container">
-                     <a href="#/"><img src="img/logo_esp_azul.png" alt="aabb" title="AABB PALMAS Esportivo" class="img-responsive"></a>
-                     <hr>
-                    <div class="row">
-                        <div class="col-md-5">
-                             <form role="form">
-                                <fieldset>							
-                                    <p class="text-uppercase pull-center" style="color:#0037a6;"> Cadastre-se</p>	
-                                     <div class="form-group">
-                                        <input type="text" name="nome" ng-model="nome" class="form-control input-lg" placeholder="Nome completo" title="Nome completo" required>
-                                    </div>
-                                     <div class="form-group">
-                                       
-                                        <input type="text" name="endereco" ng-model="endereco" class="form-control input-lg" placeholder="Endereço" title="Endereço" required>
-                                    </div> 
-                                    <div class="form-group">
-                                            <input type="text" name="telefone" ng-model="telefone" class="form-control input-lg" placeholder="Telefone" title="Telefone">
-                                    </div>
-                                    <div class="form-group">
-                                            <input type="email" name="email" ng-model="email" class="form-control input-lg" placeholder="E-mail" title="E-mail de usuário">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="senha" ng-model="senha" class="form-control input-lg" placeholder="Senha" title="Senha">
-                                        
-                                    </div>
-                                        <div class="form-group">
-                                        <input type="password" name="senha2" ng-model="senha2" class="form-control input-lg" placeholder="Confirmação de senha" title="Confirmação de senha">
-                                    </div>
-                                      <div class="alert alert-danger collapse" id="senha">
-                                         <a id="closeSenha" href="#" class="close">&times;</a>
-                                         <strong>Erro!</strong> Senhas informadas não conferem!
-                                      </div>
-                                    <div class="alert alert-danger collapse" id="campo">
-                                        <a id="closeCampo" href="#" class="close">&times;</a>
-                                        <strong>Erro!</strong> E-mail incorreto ou não informado!
-                                    </div>
-                                     <div>
-                                        <input type="submit" id="cadastrar" class="btn btn-lg" value="Registrar" style="background-color:#0037a6; color:#FFFFFF" ng-click="cadastrar()">
-                                     </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                        <div class="modal fade bs-example-modal-sm" tabindex="-1" aria-labelledby="ModalCadastro" id="cadastrado">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3>Cadastro</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        Usuário cadastrado com sucesso!
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                                    </div>
-                                </div>
+<body ng-controller="loginController" class="cyan">
+                <main>
+                  <center id="tela_login">
+                    <img class="responsive-img" src="img/logo_esp_azul.png" /><br>
+                    <!-- <div class="section"></div> -->
+                    <div class="container">
+                      <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+              
+                        <form class="col s12" method="post">
+                          <div class='row'>
+                            <div class='col s12'>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <!-------null------>
-                            
-                        </div>
-            
-                        <div class="col-md-5">
-                                  <form role="form">
-                                <fieldset>							
-                                    <p class="text-uppercase" style="color:#0037a6;" > entrar utilizando sua conta: </p>	
-                                    <div class="form-group">
-                                        <input type="email" name="username" ng-model="email2" id="username" class="form-control input-lg" placeholder="Usuário">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" ng-model="senha3" id="password" class="form-control input-lg" placeholder="Senha">
-                                    </div>
-                                    <div class="alert alert-danger collapse" id="log">
-                                        <a id="closeLog" href="#" class="close">&times;</a>
-                                        <strong>Erro!</strong> Preencha todos os campos!
-                                    </div>
-                                    <div class="alert alert-danger collapse" id="senhaErr">
-                                        <a id="closeSenhaErr" href="#" class="close">&times;</a>
-                                        <strong>Erro!</strong> Credenciais incorretas!
-                                    </div>
-                                    <div>
-                                        <input type="submit" class="btn btn-lg" value="Entrar" style="background-color:#0037a6; color:#FFFFFF" ng-click="login()">
-                                    </div>
-                                    <div>
-                                        <small><a href="#/">Esqueceu sua senha?</a></small>
-                                    </div>
-                                 </fieldset>
-                        </form>	
-                        </div>
+                          </div>
+              
+                          <div class='row'>
+                            <div class='input-field col s12'>
+                              <input class='validate' type='email' ng-model="email2" name='email' id='email'>
+                              <label for='email'>Entre com seu e-mail</label>
+                            </div>
+                          </div>
+              
+                          <div class='row'>
+                            <div class='input-field col s12'>
+                              <input class='validate' type='password' ng-model="senha3" name='password' id='password' />
+                              <label for='password'>Entre com sua senha</label>
+                            </div>
+                            <label style='float: right;'>
+                                <a class='blue-text' href='#!'><b>Esqueceu sua senha?</b></a>
+                            </label>
+                          </div>
+              
+                          <br/>
+                          <center>
+                            <div class='row'>
+                              <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' ng-click="login()">Entrar</button>
+                            </div>
+                          </center>
+                        </form>
+                      </div>
                     </div>
-                </div>
-            </div>
+                    <a href="#/cadastro">Criar conta</a>
+                  </center>
+                </main>
             <footer>
-                <p class="text-center">
-                    <small id="passwordHelpInline" class="text-muted"> Developer:<a href="mailto:caiohenrique1701@gmail.com"> Caio Henrique de Sousa</a>. AABB-Palmas ©2018 Todos os direitos reservados</small>
-                </p>
+                    <p class="center">
+                        <small id="passwordHelpInline" class="text-muted"> Developer:<a href="mailto:caiohenrique1701@gmail.com"> Caio Henrique de Sousa</a>. AABB-Palmas ©2018 Todos os direitos reservados</small>
+                    </p>
             </footer>
 </body>

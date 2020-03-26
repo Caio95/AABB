@@ -2,13 +2,13 @@
 require_once('Database.php');
 
 Class Usuario_partida {
-    public static function add($idUser, $idPartida){
+    public static function add($idUser, $idPartida, $idTime, $foto, $nome){
         $pdo = Database::connection();
-        $sql = 'INSERT INTO usuario_partida(idUser, idPartida) VALUES (?, ?)';
+        $sql = 'INSERT INTO usuario_partida(idUser, idPartida, idTime, foto, nomeUser) VALUES (?, ?, ?, ?, ?)';
         $r = false;
         try{
             $query = $pdo->prepare($sql);
-            $r = $query->execute(array($idUser, $idPartida));
+            $r = $query->execute(array($idUser, $idPartida, $idTime, $foto, $nome));
             if($query->rowCount() > 0){
                 return $pdo->lastInsertId();
             }
@@ -25,20 +25,47 @@ Class Usuario_partida {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function find_time($idPartida) {
+
+    public static function find($idPartida) {
         $pdo = Database::connection();
         $sql = 'SELECT * FROM usuario_partida WHERE idPartida = ?';
         $query = $pdo->prepare($sql);
         $query->execute(array($idPartida));
-        $partida = $query->fetch(PDO::FETCH_ASSOC);
+        $partida = $query->fetchAll(PDO::FETCH_ASSOC);
         return $partida;
     }
 
-    public static function jogadores_partida($idPartida){
+    public static function findUserTime($idUser, $idTime){
         $pdo = Database::connection();
-        $sql = 'SELECT u.nomeUser, u.nivelUser FROM usuario u INNER JOIN usuario_partida t ON u.idUser = t.idUser INNER JOIN partida p ON t.idPartida = p.idPartida WHERE p.idPartida=?';
+        $sql = 'SELECT * FROM usuario_partida WHERE idUser=? AND idTime=?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($idPartida));
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        $query->execute(array($idUser, $idTime));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function replaceUser($idUser, $idTime){
+        $pdo = Database::connection();
+        $sql = 'UPDATE usuario_partida SET idPartida=-1 WHERE idUser=? AND idTime=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($idUser, $idTime));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function resultados($idUser){
+        $pdo = Database::connection();
+        $sql = 'SELECT nomeUser, foto, COUNT(idUser) AS qtpartida, SUM(cartaoAmarelo) AS amarelo, SUM(cartaoVermelho) AS vermelho, SUM(gols) AS gol, SUM(contra) AS contra FROM usuario_partida WHERE idUser= ?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($idUser));
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function alter_userPartida($cart_amarelo, $cart_vermelho, $gols, $contra, $idUser, $idPartida){
+        $pdo = Database::connection();
+        $sql = 'UPDATE usuario_partida SET cartaoAmarelo=?,cartaoVermelho=?,gols=?,contra=? WHERE idUser=? AND idPartida=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($cart_amarelo, $cart_vermelho, $gols, $contra, $idUser, $idPartida));
+        $userPart = $query->fetch(PDO::FETCH_ASSOC);
+        return $userPart;
     }
 }

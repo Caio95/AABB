@@ -11,10 +11,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $request = json_decode($postdata);
     $idUser = $request->idUser;
     $idPartida = $request->idPartida;
+    $idTime = $request->idTime;
+    $foto = $request->foto;
+    $nome = $request->nome;
 
-    $time = Usuario_partida::add($idUser, $idPartida);
-    if($time) {
-        echo json_encode($time);
+    $userPart = Usuario_partida::add($idUser, $idPartida, $idTime, $foto, $nome);
+    if($userPart) {
+        echo json_encode($userPart);
     } else {
         echo json_encode(false);
     }

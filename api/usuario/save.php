@@ -10,12 +10,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
     $nome = $request->nome;
-    $endereco = $request->endereco;
     $email = $request->email;
     $senha = $request->senha;
     $telefone = $request->telefone;
+    $permissao = $request->permissao;
 
-    $usuario = Usuario::add($nome, $endereco, $email, $senha, $telefone);
+    $usuario = Usuario::add($nome, $email, $senha, $telefone, $permissao);
     if($usuario) {
         echo json_encode($usuario);
     } else {

@@ -13,8 +13,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $idTime = $request->idTime;
 
     $user_time = Usuario_time::add($idUser, $idTime);
-    if($user_time) {
-        echo json_encode($user_time);
+    $ut = intval($user_time); 
+    if($ut) {
+        echo json_encode($ut);
     } else {
         echo json_encode(false);
     }

@@ -1,89 +1,100 @@
 <body ng-controller="dadosController">
         <div class="container">
-                <div class="row">
-                    <div class="col-md-12" id="dados_user">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <!-- Form Name -->
-                                <legend id="legenda">DADOS CADASTRAIS</legend>
-                                
-                                <!-- Text input-->
-                                
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="Nome">Nome</label>  
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                            <i class="fa fa-user"></i>
-                                            </div>
-                                            <input type="text" placeholder="Nome completo" ng-model="nome" class="form-control input-md">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="email">Endereço</label>  
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="glyphicon glyphicon-map-marker"></i>
-                                            </div>
-                                            <input type="text" placeholder="Endereço" ng-model="endereco" class="form-control input-md">                    
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="email">Telefone</label>  
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="glyphicon glyphicon-earphone"></i>
-                                            </div>
-                                            <input type="text" placeholder="telefone" class="form-control input-md" ng-value="telefone">                    
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="email">Email</label>  
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="glyphicon glyphicon-envelope"></i>
-                                            </div>
-                                            <input type="email" placeholder="Endereço de E-mail" ng-model="email" class="form-control input-md" disabled>                    
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="senha">Senha</label>  
-                                    <div class="col-md-4">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fas fa-key"></i>
-                                            </div>
-                                            <input type="password" placeholder="Senha" ng-model="senha" class="form-control input-md">                    
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="col-md-5 control-label" ></label>  
-                                    <div class="col-md-5">
-                                            <input type="submit" class="btn btn-success" ng-click="alterar()" value="Alterar">  
-                                            <input type="submit" class="btn btn-danger" ng-click="cancelar()" value="Cancelar">  
-                                    </div>
-                                </div>
-                            
-                            </fieldset>
+            <div class="row">
+                <form id="dados_user">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h5>Meus Dados</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="center">
+                            <img id="foto_perfil" width="150" height="150" class="circle" ng-src="{{foto_user}}">
+                            <div class="input-field">
+                               <button class="btn modal-trigger" href="#foto">Foto</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="nome_usuario">
+                            <label for="icon_prefix" class="active">Nome</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">location_on</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="endereco_usuario">
+                            <label for="icon_prefix" class="active">Endereço</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">contact_phone</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="telefone_usuario">
+                            <label for="icon_prefix" class="active">Telefone</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <i class="material-icons prefix">contact_mail</i>
+                            <input id="icon_prefix" type="text" class="validate" ng-model="email_usuario" disabled>
+                            <label for="icon_prefix" class="active">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="input-field">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input id="icon_prefix" type="password" class="validate" ng-model="senha_usuario" disabled>
+                                <label for="icon_prefix" class="active">Senha</label>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <button class="btn modal-trigger" href="#alter_senha">alterar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field center">
+                            <input type="submit" class="waves-effect waves-light btn #1a237e indigo darken-4" ng-click="alterar()" value="Alterar">  
+                            <input type="submit" class="waves-effect waves-light btn" ng-click="cancelar()" value="Cancelar">  
+                        </div>
+                    </div>
+                </form>
+                <div id="alter_senha" class="modal modal-fixed-footer">
+                    <div class="model-content">
+                        <h4>Alterar senha</h4>
+                        <form action="#">
+                            <div class="file-field input-field">
+                               
+                            </div>
                         </form>
                     </div>
                 </div>
+                <div id="foto" class="modal modal-fixed-footer">
+                    <div class="modal-content">
+                        <h4>Selecione a foto...</h4>
+                        <form action="#">
+                            <div class="file-field input-field">
+                                <div class="btn" flow-init flow-name="uploader.flow" flow-files-added="processFiles($files)">
+                                    <span >Selecionar</span>
+                                    <input flow-btn type="file" accept="image/jpeg,image/png">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" >
+                                </div>
+                                <div class="center">
+                                    <img ng-src="{{imageStrings}}" class="responsive-img">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                        <button type="submit" class="btn-small blue" ng-click="salvar_foto()">Salvar Foto</button>
+                    </div>
+                </div>
             </div>
+        </div>
 </body>

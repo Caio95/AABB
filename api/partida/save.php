@@ -9,13 +9,18 @@ require_once('../database/Partida.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
-    $descricao = $request->descricao;
-    $data = $request->data;
-    $hora = $request->hora;
+    $id_Campeonato = $request->id_Campeonato;
+    $descricaoPart = $request->descricaoPart;
+    $dataPartida = $request->dataPartida;
+    $horaPartida = $request->horaPartida;
+    $idTime1 = $request->idTime1;
+    $idTime2 = $request->idTime2;
 
-    $partida = Partida::add($descricao, $data, $hora);
-    if($partida) {
-        echo json_encode($partida);
+
+    $partida = Partida::add($id_Campeonato, $descricaoPart, $dataPartida, $horaPartida, $idTime1, $idTime2);
+    $part = intval($partida); 
+    if($part) {
+        echo json_encode($part);
     } else {
         echo json_encode(false);
     }

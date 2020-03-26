@@ -1,57 +1,49 @@
 <body ng-controller="adm_desativaController">
     <div class="container">
-        <div class="row" id="desativa_usuario_adm">
-            <div class="col-md-12">
-                    <form class="form-horizontal">
-                        <fieldset>
-                                <legend id="legenda">DESATIVAR JOGADORES</legend>
-                                
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                            <div class="input-group">
-                                                <div class="input-group-addon">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" ng-model="q" placeholder="Pesquisar...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div> 
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <div class="table-responsive">
-                                                    <table class="table table-striped">
-                                                            <tr>
-                                                                <td><b>Nome</b></td>
-                                                                <td><b>Endereço</b></td>
-                                                                <td><b>Telefone</b></td>
-                                                                <td><b>Situação</b></td>
-                                                            </tr>
-                                                            <tr ng-repeat="usuario in usuarios | filter:q | orderBy: q">
-                                                                <td>{{usuario.nomeUser}}</td>
-                                                                <td>{{usuario.enderecoUser}}</td>
-                                                                <td>{{usuario.telefoneUser}}</td>
-                                                                <td>
-                                                                    <select ng-model="usuario.desativaUser" class="btn btn-default">
-                                                                        <option value="0">Ativado</option>
-                                                                        <option value="-1">Desativado</option>
-                                                                    </select>
-                                                                    <button class="btn btn-warning left" title="Salvar" ng-click="desativar_user(usuario)">
-                                                                            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                    </table>
-                                                </div>
-                                            </div> <!--input-group-addon-->
-                                        </div>
-                                    </div>
-                                </div>         
-                        </fieldset>
-                    </form>
-                </div>
+        <div class="row">
+            <div class="col s12"  id="desativa_usuario_adm">
+                <form>
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h5>Desativar Jogadores</h5>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="input-field col s6">
+                            <input type="text" ng-model="q" class="validate">
+                            <label>Pesquisar...</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="table-responsive">
+                                <table class="highlight centered" id="table_desativa">
+                                    <tr>
+                                        <td colspan="2"><b>Nome</b></td>
+                                        <td><b>Situação</b></td>
+                                        <td><b> </b></td>
+                                    </tr>
+                                    <tr ng-repeat="usuario in usuarios | filter:q | orderBy: q">
+                                        <td><img width="32" height="32" ng-src="{{usuario.foto_perfil}}" class="circle"></td>
+                                        <td>{{usuario.nomeUser}}</td>
+                                        <td>
+                                            <select ng-model="usuario.desativaUser" class="browser-default">
+                                                <option value="0">Ativado</option>
+                                                <option value="-1">Desativado</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button class="btn-floating right #1a237e indigo darken-4" title="Salvar" ng-click="desativar_user(usuario)">
+                                                <i class="material-icons">save</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>         
+                </form>
+            </div>
         </div>
     </div>
 

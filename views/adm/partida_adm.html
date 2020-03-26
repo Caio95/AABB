@@ -1,0 +1,116 @@
+<body ng-controller="partidaAdmController">
+    <ul class="collapsible popout"> 
+            <li>
+                <div class="collapsible-header"><i class="material-icons">description</i>Dados da Partida</div>
+                <div class="collapsible-body">
+                    <form>
+                        <div class="row"> 
+                            <div class="input-field col s12">
+                                <i class="fa fa-futbol-o prefix"></i>
+                                <input type="text" class="validate" ng-model="desc_partida" title="Descrição da Partida" ng-disabled="desabilitar">
+                                <label for="icon_prefix" class="active">Nome</label>   
+                            </div>
+                        </div>
+
+                        <div class="row"> 
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">event</i>
+                                <input type="date" class="validate" title="Data da Partida" ng-model="data_partida" value="{{data_partida | date: 'yyyy-MM-dd'}}" ng-disabled="desabilitar">
+                                <label for="icon_prefix" class="active">Data</label>
+                            </div>
+                        </div>
+
+                        <div class="row"> 
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">access_time</i>
+                                <input type="time" title="Hora da Partida" ng-model="hora_partida" ng-change="getHora(hora_partida)" value="{{hora_partida | date: 'HH:mm:ss'}}" ng-disabled="desabilitar">
+                                <label for="icon_prefix" class="active">Hora</label>   
+                            </div>
+                        </div>
+
+                        <h6>Disputa:</h6>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <select ng-model="time1" class="browser-default" ng-disabled="desabilitar">
+                                    <option value="">Selecione...</option>
+                                    <option  ng-repeat="time in times" value="{{time.idTime}}">{{time.nomeTime}}</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s6">
+                                <select ng-model="time2" class="browser-default" ng-disabled="desabilitar">
+                                    <option value="">Selecione...</option>
+                                    <option  ng-repeat="time in times" value="{{time.idTime}}">{{time.nomeTime}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-field col s12 center">
+                            <input type="button" class="waves-effect waves-light btn #1a237e indigo darken-4" ng-click="alterar_partida(hora_partida)" value="Alterar Dados" ng-disabled="desabilitar">
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </li>
+            <li class="active">
+                <div class="collapsible-header"><i class="fa fa-futbol-o"></i>Sumula</div>
+                <div class="collapsible-body">
+                    <div class="row center" id="legenda">
+                        <p>Legenda:</p><img width="20" height="20" src="/aabb/img/yellow.png"> - Cartão Amarelo 
+                        <img width="20" height="20" src="/aabb/img/red.png"> - Cartão Vermelho
+                        <img width="20" height="20" src="/aabb/img/gol.png"> - Gol Pros
+                        <img width="20" height="20" src="/aabb/img/gol_contra1.png"> - Gol Contra
+                    </div>
+                    <div class="row" id="tabela_partida">
+                        <div class="input-field col s12">
+                            <h5 class="center"><img height="48" width="48" src="/aabb/img/time1.png"> {{team1.nomeTime}}</h5>
+                            <div class="table-responsive">
+                                <table class="highlight centered">
+                                    <tr>
+                                        <td colspan="2"><b>Jogador</b></td>
+                                        <td><img width="32" height="32" src="/aabb/img/yellow.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/red.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/gol.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/gol_contra1.png"></td>
+                                    </tr>
+                                    <tr ng-repeat="t in t1">
+                                        <td><img width="32" height="32" ng-src="{{t.foto}}" class="circle"></td>
+                                        <td>{{t.nomeUser}}</td>
+                                        <td class="#fff59d yellow lighten-3"><input class="center" type="number" min="0" ng-change="addAmarelo(t,amarelo)" ng-model="amarelo" ng-value="{{t.cartaoAmarelo}}" ng-disabled="desabilitar"></td>
+                                        <td class="#ef9a9a red lighten-3"><input class="center" type="number" min="0" ng-change="addVermelho(t,vermelho)" ng-model="vermelho" ng-value="{{t.cartaoVermelho}}" ng-disabled="desabilitar"></td>
+                                        <td class="#a5d6a7 green lighten-3"><input class="center" type="number" min="0" ng-change="addGol(t, gol)" ng-model="gol" ng-value="{{t.gols}}" ng-disabled="desabilitar"></td>
+                                        <td class="#b2ebf2 cyan lighten-4"><input class="center" type="number" min="0" ng-change="addContra(t, contra)" ng-model="contra" ng-value="{{t.contra}}" ng-disabled="desabilitar"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="tabela_partida">
+                        <div class="input-field col s12">
+                            <h5 class="center"><img height="48" width="48" src="/aabb/img/time2.png"> {{team2.nomeTime}}</h5>
+                            <div class="table-responsive">
+                                <table class="highlight centered">
+                                    <tr>
+                                        <td colspan="2"><b>Jogador</b></td>
+                                        <td><img width="32" height="32" src="/aabb/img/yellow.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/red.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/gol.png"></td>
+                                        <td><img width="32" height="32" src="/aabb/img/gol_contra1.png"></td>
+                                    
+                                    </tr>
+                                    <tr ng-repeat="t in t2">
+                                        <td><img width="32" height="32" ng-src="{{t.foto}}" class="circle"></td>
+                                        <td>{{t.nomeUser}}</td>
+                                        <td class="#fff59d yellow lighten-3"><input class="center" type="number" min="0" ng-change="addAmarelo(t,amarelo)" ng-model="amarelo" ng-value="{{t.cartaoAmarelo}}" ng-disabled="desabilitar"></td>
+                                        <td class="#ef9a9a red lighten-3"><input class="center" type="number" min="0" ng-change="addVermelho(t,vermelho)" ng-model="vermelho" ng-value="{{t.cartaoVermelho}}" ng-disabled="desabilitar"></td>
+                                        <td class="#a5d6a7 green lighten-3"><input class="center" type="number" min="0" ng-change="addGol(t, gol)" ng-model="gol" ng-value="{{t.gols}}" ng-disabled="desabilitar"></td>
+                                        <td class="#b2ebf2 cyan lighten-4"><input class="center" type="number" min="0" ng-change="addContra(t, contra)" ng-model="contra" ng-value="{{t.contra}}" ng-disabled="desabilitar"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+    </ul>
+
+</body>

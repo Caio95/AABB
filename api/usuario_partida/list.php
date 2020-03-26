@@ -6,8 +6,8 @@ header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accep
 
 require_once('../database/Usuario_partida.php');
 
-$time = Usuario_partida::all();
+$userPart = Usuario_partida::all();
 
-echo json_encode($time);
+echo json_encode($userPart);
 
 ?>

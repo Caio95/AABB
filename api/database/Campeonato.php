@@ -2,13 +2,13 @@
 require_once('Database.php');
 
 Class Campeonato {
-    public static function add($nome, $dataInicio, $dataFim){
+    public static function add($nome, $descricao, $dataInicio, $dataFim){
         $pdo = Database::connection();
-        $sql = 'INSERT INTO campeonato(nomeCampeonato, dataInicio, dataFim) VALUES (?, ?, ?)';
+        $sql = 'INSERT INTO campeonato(nomeCampeonato, descricaoCampeonato, dataInicio, dataFim) VALUES (?, ?, ?, ?)';
         $r = false;
         try{
             $query = $pdo->prepare($sql);
-            $r = $query->execute(array($nome, $dataInicio, $dataFim));
+            $r = $query->execute(array($nome, $descricao, $dataInicio, $dataFim));
             if($query->rowCount() > 0){
                 return $pdo->lastInsertId();
             }
@@ -41,11 +41,11 @@ Class Campeonato {
         return $campeonato;
     }
 
-    public static function update($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato){
+    public static function update($nome, $descricao, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato){
         $pdo = Database::connection();
-        $sql = 'UPDATE campeonato SET nomeCampeonato=?, dataInicio=?, dataFim=?, encerraInscricoes=?, status=? WHERE idCampeonato=?';
+        $sql = 'UPDATE campeonato SET nomeCampeonato=?, descricaoCampeonato=?, dataInicio=?, dataFim=?, encerraInscricoes=?, status=? WHERE idCampeonato=?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato));
+        $query->execute(array($nome, $descricao, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato));
         $campeonato = $query->fetch(PDO::FETCH_ASSOC);
         return $campeonato;
     }

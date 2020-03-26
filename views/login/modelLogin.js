@@ -1,93 +1,43 @@
 'use strict';
 
-angular.module('moduloLogin',['ui-notification'])
-    .controller('loginController', function($rootScope, $scope, $http, $location, $localStorage, Notification){
+angular.module('moduloLogin',['ui-notification','base64'])
+    .controller('loginController', function($rootScope, $scope, $http, $location, $localStorage, Notification, $base64){
         $rootScope.pageTitle = 'AABB Esportivo | entre ou cadastre-se';
-        $rootScope.usuario = false;
-
-        if($localStorage.usuario){
+        $rootScope.permissao = false;
+        if($localStorage.permissao){
             $location.path('/inicio');
-            $rootScope.usuario = $localStorage.usuario;
+            $rootScope.permissao = $localStorage.permissao;
         } else{
             $location.path('/');
         }
 
         $scope.login = function(){
             if($scope.email2 == null || $scope.senha3 == null){
-                $('#log').show('in');
+                Notification.error('Preencha todos os campos!');
             }
             else{
                 $http.post('http://localhost/aabb/api/usuario/validate.php',{
                     'email' : $scope.email2,
-                    'senha' : $scope.senha3
+                    'senha' : $base64.encode($scope.senha3)
                 }).then(function(result){
                     if(result.data != 'false'){
-                        $rootScope.usuario = result.data;
+                        $scope.usuario = result.data;
                         $localStorage.usuario = result.data.idUser;
-                        if($localStorage.usuario == 1){  // altenticacao usuario administrador
+                        $localStorage.permissao = result.data.permissao;
+                        if($localStorage.permissao ==1){  // altenticacao usuario administrador
                             $localStorage.name = result.data.nomeUser;
+                            setTimeout(function(){ location.reload(); }, 1000);
                             $location.path('/inicio_adm');
-                        }else{
-                            $localStorage.name = result.data.nomeUser;  // usuario comum 
+                        }else if($localStorage.permissao ==0){
+                            $localStorage.name = result.data.nomeUser;  // usuario comum
+                            location.reload();
                             $location.path('/inicio');
                         }
 
                     } else{
-                        $('#senhaErr').show('in');
+                        Notification.error('Usuário ou senha incorretos!');
                     }
                 });
             }
-
-            $('#closeLog').click(function(){
-                $('#log').hide('fade'); //alerta preenchimento de campos
-            })
-            $('#closeSenhaErr').click(function(){
-                $('#senhaErr').hide('fade');  //alerta login ou senha incorreto
-            });
-        }
-
-        $scope.cadastrar = function(){
-            if(validEmail($scope.email)){
-                if(validar($scope.senha, $scope.senha2)){
-                        $http.post('http://localhost/aabb/api/usuario/save.php',{
-                            'nome' : $scope.nome,
-                            'endereco' : $scope.endereco,
-                            'email' : $scope.email,
-                            'senha' : $scope.senha,
-                            'telefone' : $scope.telefone
-                        }).then(function(result){
-                            Notification.success('Cadastrado Com sucesso!')
-                            $scope.nome = null;
-                            $scope.email = null;
-                            $scope.endereco = null;
-                            $scope.senha = null;
-                            $scope.senha2 = null;
-                            $scope.telefone = null;
-                        });
-                        $('#cadastrado').show('in');
-                } else{
-                    $('#senha').show('in');
-                }
-            } else{
-                $('#emailErr').show('in');
-            }    
-        }
-
-        function validar(senha1,senha2){
-            if(senha1 !=null && senha2 != null){
-                if(senha1 == senha2){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function validEmail(email){
-            var er = /^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9\._-]+\.)[a-zA-Z-0-9]{2,3}/; 
-            if(!er.exec(email) )
-            {
-                return false;
-            }
-            return true;
         }
 })

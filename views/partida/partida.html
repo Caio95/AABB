@@ -1,0 +1,45 @@
+<body ng-controller="partidaController">
+        <div class="container">
+                <div class="row center">
+                    <h5>Dados da Partida</h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="dados_partida">
+                        <form>
+                            <div class="row"> 
+                                <div class="input-field col s12">
+                                    <i class="fa fa-futbol-o prefix" aria-hidden="true"></i>
+                                    <input type="text" class="validate" ng-model="descricao_partida" title="Descrição" disabled>
+                                    <label for="icon_prefix" class="active">Descrição</label>   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input type="date" class="validate" title="Data da Partida" ng-model="data_partida" value="{{data_partida | date: 'yyyy-MM-dd'}}" disabled>
+                                    <label for="icon_prefix" class="active">Data</label>   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s8">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input type="time" class="validate" title="Hora da Partida" ng-model="hora_partida" value="{{hora_partida | date: 'HH:mm:ss'}}" disabled>
+                                    <label for="icon_prefix" class="active">Data</label>   
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                        <div id="tabela_jogadores">
+                            <h4>Times</h4>
+                            <table class="responsive-table">
+                                <tr ng-repeat="jogador in jogadores">
+                                    <td><span class="glyphicon glyphicon-user"></span> {{jogador.nomeUser}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div> -->
+
+            </div>
+</body>

@@ -2,13 +2,13 @@
 require_once('Database.php');
 
 Class Usuario {
-    public static function add($nome, $endereco, $email, $senha, $telefone){
+    public static function add($nome, $email, $senha, $telefone, $permissao){
         $pdo = Database::connection();
-        $sql = 'INSERT INTO usuario(nomeUser, enderecoUser, emailUser, senhaUser, telefoneUser) VALUES (?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO usuario(nomeUser, emailUser, senhaUser, telefoneUser, permissao) VALUES (?, ?, ?, ?, ?)';
         $r = false;
         try{
             $query = $pdo->prepare($sql);
-            $r = $query->execute(array($nome, $endereco, $email, $senha, $telefone));
+            $r = $query->execute(array($nome, $email, $senha, $telefone, $permissao));
             if($query->rowCount() > 0){
                 return $pdo->lastInsertId();
             }
@@ -26,6 +26,13 @@ Class Usuario {
         return $query->rowCount() > 0;
     }
 
+    public static function validEmail(){
+        $pdo = Database::connection();
+        $sql = 'SELECT emailUser FROM usuario WHERE idUser > 1';
+        $query = $pdo->query($sql);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function all(){
         $pdo = Database::connection();
         $sql = 'SELECT * FROM usuario WHERE idUser > 1';
@@ -38,15 +45,6 @@ Class Usuario {
         $sql = 'SELECT * FROM usuario WHERE idUser = ?';
         $query = $pdo->prepare($sql);
         $query->execute(array($id));
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-        return $user;
-    }
-
-    public static function find_name($nome) {
-        $pdo = Database::connection();
-        $sql = 'SELECT * FROM usuario WHERE nomeUser LIKE %?%';
-        $query = $pdo->prepare($sql);
-        $query->execute(array($nome));
         $user = $query->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
@@ -74,6 +72,15 @@ Class Usuario {
         $sql = 'UPDATE usuario SET nivelUser=? WHERE idUser=?';
         $query = $pdo->prepare($sql);
         $query->execute(array($nivel, $idUser));
+        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        return $usuario;
+    }
+
+    public static function salvar_foto($foto, $idUser){
+        $pdo = Database::connection();
+        $sql = 'UPDATE usuario SET foto_perfil=? WHERE idUser=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($foto, $idUser));
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
         return $usuario;
     }

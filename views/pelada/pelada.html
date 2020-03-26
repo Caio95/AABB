@@ -1,0 +1,61 @@
+<body ng-controller="peladaController">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 center">
+                <h5>Pelada</h5>
+            </div>
+            <form class="col s12" id="dados_campeonato">
+                    <div class="row"> 
+                        <div class="input-field col s12">
+                            <i class="fa fa-futbol-o prefix"></i>
+                            <input type="text" class="validate" title="Nome da Pelada" ng-model="nome_campeonato" disabled>
+                            <label for="icon_prefix" class="active">Nome</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">description</i>
+                                <input type="text" class="validate" title="Descrição da Pelada" ng-model="descricao_campeonato" disabled>
+                                <label for="icon_prefix" class="active">Descrição</label>   
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="date" class="validate" title="Data de Inicio" ng-value="dataInicio_campeonato" disabled>
+                            <label for="icon_prefix" class="active">Data de Inicio</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">date_range</i>
+                            <input type="date" class="validate" title="Data de Termino" ng-value="dataFim_campeonato" disabled>
+                            <label for="icon_prefix" class="active">Data de Termino</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <i class="material-icons prefix">group</i>
+                            <input type="number" class="validate" title="Inscritos da Pelada" ng-value="inscritos" disabled>
+                            <label for="icon_prefix" class="active">Inscritos</label>   
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 center"> 
+                            <button class="btn waves-effect waves-light blue" ng-disabled="desabilitar" ng-click="participar()">Participar</button>
+                        </div>
+                    </div>
+            </form>
+            <div class="row">
+                <h4>Partidas</h4>
+                <ul class="collection">
+                    <li class="collection-item avatar" ng-repeat="partida in partidas">
+                        <img src="img/bola.png" class="circle">
+                        <span class="title"><b>{{partida.descricaoPart}}</b></span>
+                        <a href="#/partida/{{partida.idPartida}}" title="Ver mais detalhes" class="secondary-content btn-floating cyan"><i class="material-icons medium">forward</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>

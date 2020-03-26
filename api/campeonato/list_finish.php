@@ -6,8 +6,8 @@ header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin,Accep
 
 require_once('../database/Campeonato.php');
 
-$campeonatos = Campeonato::all_finalizado();
+$peladas = Campeonato::all_finalizado();
 
-echo json_encode($campeonatos);
+echo json_encode($peladas);
 
 ?>

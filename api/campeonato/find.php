@@ -10,8 +10,8 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$campeonato = Campeonato::find($id);
+$pelada = Campeonato::find($id);
 
-echo json_encode($campeonato);
+echo json_encode($pelada);
 
 ?>

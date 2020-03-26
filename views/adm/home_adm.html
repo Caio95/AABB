@@ -1,0 +1,81 @@
+<body ng-controller="homeAdmController">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><img width="28" height="22" src="/aabb/img/gol.png"> <b>TOP 10 Artilheiros</b></div>
+                <div class="collapsible-body">
+                    <ul class="collection" ng-repeat="a in resultados | orderBy: '-gol' | limitTo:qt">
+                        <li class="collection-item avatar">
+                            <img ng-src="{{a.foto}}" class="circle">
+                            <span class="title"><b>{{a.nomeUser}}</b></span>
+                            <p>Gols: {{a.gol}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><img width="28" height="22" src="/aabb/img/gol_contra.png"> <b>TOP 10 Gols contra</b></div>
+                <div class="collapsible-body">
+                    <ul class="collection" ng-repeat="c in resultados | orderBy: '-contra' | limitTo:qt">
+                        <li class="collection-item avatar">
+                            <img ng-src="{{c.foto}}" class="circle">
+                            <span class="title"><b>{{c.nomeUser}}</b></span>
+                            <p>Gols Contra: {{c.contra}}</p>
+                          </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><img width="28" height="22" src="/aabb/img/yellow.png"> <b>TOP 10 cartões Amarelos</b></div>
+                <div class="collapsible-body">
+                    <ul class="collection" ng-repeat="a in resultados | orderBy: '-amarelo' | limitTo:qt">
+                        <li class="collection-item avatar">
+                            <img ng-src="{{a.foto}}" class="circle">
+                            <span class="title"><b>{{a.nomeUser}}</b></span>
+                            <p>Cartões Amarelos: {{a.amarelo}}</p>
+                          </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><img width="28" height="22" src="/aabb/img/red.png"> <b>TOP 10 cartões Vermelhos</b></div>
+                <div class="collapsible-body">
+                    <ul class="collection" ng-repeat="v in resultados | orderBy: '-vermelho' | limitTo:qt">
+                        <li class="collection-item avatar">
+                            <img ng-src="{{v.foto}}" class="circle">
+                            <span class="title"><b>{{v.nomeUser}}</b></span>
+                            <p>Cartões Vermelhos: {{v.vermelho}}</p>
+                          </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="fa fa-line-chart"></i><b>Estatísticas Gerais</b></div>
+                <div class="collapsible-body">
+                    <div class="input-field col s6" id="pesquisa_estatisica_geral">
+                        <input type="text" ng-model="q" class="validate">
+                        <label>Pesquisar...</label>   
+                    </div>
+                    <div class="table-responsive">
+                        <table class="highlight centered" id="estatistica_geral">
+                            <tr>
+                                <td colspan="2"><b>Jogador</b></td>
+                                <td><img width="32" height="32" src="/aabb/img/yellow.png"></td>
+                                <td><img width="32" height="32" src="/aabb/img/red.png"></td>
+                                <td><img width="32" height="32" src="/aabb/img/gol.png"></td>
+                                <td><img width="32" height="32" src="/aabb/img/gol_contra.png"></td>
+                            </tr>
+                            <tr ng-repeat="t in resultados | filter:q | orderBy: q">
+                                <td><img width="32" height="32" ng-src="{{t.foto}}" class="circle"></td>
+                                <td>{{t.nomeUser}}</td>
+                                <td>{{t.amarelo}}</td>
+                                <td>{{t.vermelho}}</td>
+                                <td>{{t.gol}}</td>
+                                <td>{{t.contra}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+</body>

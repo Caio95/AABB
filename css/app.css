@@ -1,132 +1,81 @@
-.navbar-default{
-    height: 56px;
-}
-
 #logo{
-    margin-top: 3px;
+    margin-top: 6px !important;
+    margin-left: 6px;
 }
 
-.navbar-brand img{
-    margin-top: -11px;
+.navbar-collapse a{
+    color: #ffffff !important;
+    font-size: 15px;
+    font-weight: bold;
 }
 
-#logo{
-    margin-top: -11px;
+.dropdown-content a{
+	color: #1a237e !important;
 }
 
-.navbar-collapse{
-    background-color:  #f8f8f8;
+#nav_user a{
+	color: #1a237e !important;
 }
 
-#input_nivel{
-    width: 100px !important;
+#loading-bar .bar {
+    background: #33ba3a;
+    height: 15px;
+  }
+
+#passwordHelpInline{
+	margin-bottom: 2px !important;
+	text-align: center;
 }
 
-#dados_user {
-    padding-top: 70px !important;
+#peladas_adm > a{
+	color: #000000;
 }
 
-#dados_campeonato {
-    padding-top: 70px !important;
+#campeonatos_user > a{
+	color: #000000;
 }
 
-#nivel_jogador_adm {
-    padding-top: 70px !important;
+#partidas_camp_adm > a{
+    color: #000000;
 }
 
-#desativa_usuario_adm {
-    padding-top: 70px !important;
+#tabela_partida{
+    margin-top: -45px !important;
+    margin-left: -20px !important;
 }
 
-#campeonatos_finalizados_adm {
-    padding-top: 70px !important;
+#legenda{
+    margin-top: -35px !important;
+    font-size: 10px;
+    font-weight: bold;
 }
 
-#dados_campeonato_adm {    
-    padding-top: 70px !important;
+#addPartida {
+    margin-top: -30px !important;
+    
 }
 
-#campeonatos_adm{
-    padding-top: 70px !important;
+#table_desativa{
+    margin-left: -10px !important;
+    margin-right: -10px !important; 
 }
 
-#tabela_partidas{
-    padding-top: 70px !important;
+#cadastro{
+    margin-top: -40px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+#pesquisa_estatisica_geral{
+    margin-top: -16px !important;
 }
 
-#tabela_campeonatos {
-    padding-top: 70px !important;
+#estatistica_geral{
+    margin-top: -25px !important;
+    margin-left: -15px !important;
 }
 
-#dataPartida{
-    font-size: 7px !important;
-}
-
-#inicio_jogador {
-    padding-top: 70px !important;
-}
-
-#notificao_usuario {
-    padding-top: 70px !important;
-}
- 
-#cadastro_campeonato {
-    padding-top: 70px !important;
-}
-
-#data_value_partidas {
-    width: 101px !important;
-}
-
-#hora_value_partidas {
-    width: 64px !important;
-}
-
-#data_value_partida{
-    width: 101px !important;
-}
-
-#hora_value_partida{
-    width: 64px !important;
-}
-
-#data_inicio_campeonato{
-    width: 101px !important;
-}
-
-#data_fim_campeonato{
-    width: 101px !important;
-}
-
-#inscritos_campeonato{
-    width: 64px !important;
-}
-
-#id_campeonato {
-    width: 64px !important;
-}
-
-#legenda {
-    color: blue !important;
-    font-style: italic;
-}
-
-#nivel_jogador {
-    width: 70px !important;
-}
-
-#partidas_jogadas {
-    width: 70px !important;
-}
-
-#gols_jogador {
-    width: 70px !important;
-}
-
-#cartao_amarelo {
-    width: 70px !important;
-}
-
-#cartao_vermelho {
-    width: 70px !important;
+#foto_perfil{
+    border: 12px;
+    border-color: #1a237e !important;
 }

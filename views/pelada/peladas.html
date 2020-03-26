@@ -1,0 +1,18 @@
+<body ng-controller="peladasController">
+    <div class="container">
+        <ul class="collection" ng-hide="usuario.desativaUser==-1">
+                <li class="collection-item avatar" ng-repeat="pelada in peladas" id="campeonatos_user">
+                    <a href="#/pelada/{{pelada.idCampeonato}}">
+                        <img src="img/pelada.png" class="circle">
+                        <span class="title"><b>{{pelada.nomeCampeonato}}</b></span>
+                        <p>{{pelada.descricaoCampeonato}}</p>
+                    </a>
+                </li>
+        </ul>
+    </div>
+    <div class="center" ng-show="usuario.desativaUser==-1">
+        <i class="large material-icons">error_outline</i>
+        <h4>Usuario desativado</h4>
+        <p>Entre em contato com a coordenação de esportes para solucionar o problema.</p>
+    </div>
+</body>

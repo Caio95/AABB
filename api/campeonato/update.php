@@ -10,16 +10,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
     $nome = $request->nome;
+    $descricao = $request->descricao;
     $dataInicio = $request->dataInicio;
     $dataFim = $request->dataFim;
     $encerraInscricoes = $request->encerraInscricoes;
     $status = $request->status;
     $idCampeonato = $request->idCampeonato;
 
-    $campeonato = Campeonato::update($nome, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato);
+    $pelada = Campeonato::update($nome, $descricao, $dataInicio, $dataFim, $encerraInscricoes, $status, $idCampeonato);
 
-    if($campeonato) {
-        echo json_encode($campeonato);
+    if($pelada) {
+        echo json_encode($pelada);
     } else {
         echo json_encode(false);
     }

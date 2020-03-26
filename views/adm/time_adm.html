@@ -1,0 +1,44 @@
+<body ng-controller="timeAdmController">
+    <ul class="collapsible popout">
+        <li class="active">
+            <div class="collapsible-header"><i class="material-icons">group</i>Time</div>
+            <div class="collapsible-body">
+                <div class="row"> 
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">group</i>
+                        <input type="text" class="validate" ng-model="nome_time" title="Nome do Time">
+                        <label for="icon_prefix" class="active">Nome do Time</label>   
+                    </div>
+                </div>
+                <div class="row center">
+                        <button class="waves-effect btn #1a237e indigo darken-4" ng-click="alterar()">Alterar</button>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">import_export</i>Substituir</div>
+            <div class="collapsible-body">
+                    <div class="collection" ng-repeat="j in jogadores_time">
+                        <a href="#substituir" ng-click="getIdSair(j.idUser)" class="collection-item modal-trigger" style="color:#000000;"><b>{{j.nomeUser}}</b></a>
+                    </div>
+            </div>
+        </li>
+        <div id="substituir" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Substituir por...</h4>
+                <p style="font-size:11px;">Selecione o jogador que irá substituir o atual.</p>
+                <form action="#" ng-repeat="j in jogadores_disponiveis">
+                    <p>
+                      <label>
+                        <input class="with-gap" type="radio" ng-click="getIdEntrar(j.idUser)"/>
+                        <span>{{j.nomeUser}}</span>
+                      </label>
+                    </p>
+                  </form>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close waves-effect waves-green btn-flat" ng-click="confirmarSubst()">Confirmar</button>
+            </div>
+        </div>
+    </ul>
+</body>

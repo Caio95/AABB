@@ -26,4 +26,21 @@ Class Usuario_time {
         $time = $query->fetch(PDO::FETCH_ASSOC);
         return $time;
     }
+
+    public static function substituir($entra, $sai, $idTime){
+        $pdo = Database::connection();
+        $sql = 'UPDATE usuario_time SET idUser=? WHERE idUser=? AND idTime=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($entra, $sai, $idTime));
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function jogadores_time($idTime){
+        $pdo = Database::connection();
+        $sql = 'SELECT u.nomeUser, u.idUser, u.foto_perfil, p.idTime FROM usuario u INNER JOIN usuario_time p ON u.idUser=p.idUser INNER JOIN time t ON t.idTime=p.idTime WHERE t.idTime= ?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($idTime));
+        $time = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $time;
+    }
 }

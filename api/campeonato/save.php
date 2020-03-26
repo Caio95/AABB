@@ -10,12 +10,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
     $nome = $request->nome;
+    $descricao = $request->descricao;
     $dataInicio = $request->dataInicio;
     $dataFim = $request->dataFim;
 
-    $campeonato = Campeonato::add($nome, $dataInicio, $dataFim);
-    if($campeonato) {
-        echo json_encode($campeonato);
+    $pelada = Campeonato::add($nome, $descricao, $dataInicio, $dataFim);
+    if($pelada) {
+        echo json_encode($pelada);
     } else {
         echo json_encode(false);
     }

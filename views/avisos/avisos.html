@@ -1,0 +1,15 @@
+<body ng-controller="avisoController">
+    <div class="row">
+        <ul class="collapsible popout" >
+            <li ng-repeat="aviso in avisos">
+              <div class="collapsible-header"><i class="material-icons">notifications_active</i><b>{{aviso.tituloAviso}}</b></div>
+              <div class="collapsible-body">
+                  <span>
+                    {{aviso.mensagem}} <br/>
+                    <p class="right" style="font-size: 10px;">{{aviso.dataAviso}} às {{aviso.horaAviso}}</p>
+                </span>
+              </div>
+            </li>
+          </ul>
+      </div>
+</body>

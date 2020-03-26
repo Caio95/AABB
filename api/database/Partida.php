@@ -2,13 +2,13 @@
 require_once('Database.php');
 
 Class Partida {
-    public static function add($descricao, $data, $hora){
+    public static function add($id_Campeonato, $descricaoPart, $dataPartida, $horaPartida, $idTime1, $idTime2){
         $pdo = Database::connection();
-        $sql = 'INSERT INTO partida(descricaoPart, dataPartida, horaPartida) VALUES (?, ?, ?)';
+        $sql = 'INSERT INTO partida(id_Campeonato, descricaoPart, dataPartida, horaPartida, idTime1, idTime2) VALUES (?, ?, ?, ?, ?, ?)';
         $r = false;
         try{
             $query = $pdo->prepare($sql);
-            $r = $query->execute(array($descricao, $data, $hora));
+            $r = $query->execute(array($id_Campeonato, $descricaoPart, $dataPartida, $horaPartida, $idTime1, $idTime2));
             if($query->rowCount() > 0){
                 return $pdo->lastInsertId();
             }
@@ -25,6 +25,15 @@ Class Partida {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function all_campeonato($id_Campeonato){
+        $pdo = Database::connection();
+        $sql = 'SELECT * FROM partida WHERE id_campeonato=?';
+        $query = $pdo->prepare($sql);
+        $query->execute(array($id_Campeonato));
+        $partidas = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $partidas;
+    }
+
     public static function find($id) {
         $pdo = Database::connection();
         $sql = 'SELECT * FROM partida WHERE idPartida = ?';
@@ -34,12 +43,12 @@ Class Partida {
         return $partida;
     }
 
-    public static function update($descricao, $data, $hora, $idPartida){
+    public static function update($descricaoPart, $dataPartida, $horaPartida, $idTime1, $idTime2, $idPartida){
         $pdo = Database::connection();
-        $sql = 'UPDATE partida SET descricaoPart=?, dataPartida=?, horaPartida=? WHERE idPartida=?';
+        $sql = 'UPDATE partida SET descricaoPart=?, dataPartida=?, horaPartida=?, idTime1=?, idTime2=? WHERE idPartida=?';
         $query = $pdo->prepare($sql);
-        $query->execute(array($descricao, $data, $hora, $idPartida));
-        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        $query->execute(array($descricaoPart, $dataPartida, $horaPartida, $idTime1, $idTime2, $idPartida));
+        $partida = $query->fetch(PDO::FETCH_ASSOC);
         return $partida;
     }
 
@@ -48,7 +57,7 @@ Class Partida {
         $sql = 'UPDATE partida SET gol1=?, gol2=? WHERE idPartida=?';
         $query = $pdo->prepare($sql);
         $query->execute(array($placar_time1, $placar_time2, $idPartida));
-        $usuario = $query->fetch(PDO::FETCH_ASSOC);
+        $partida = $query->fetch(PDO::FETCH_ASSOC);
         return $partida;
     }
 }
